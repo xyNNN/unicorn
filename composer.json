@@ -1,0 +1,38 @@
+{
+  "name": "xynnn/unicorn",
+  "type": "library",
+  "description": "A framework agnostic libary to convert several units",
+  "keywords": [
+    "converter",
+    "units",
+    "formats"
+  ],
+  "homepage": "https://github.com/xyNNN/unicorn",
+  "license": "GNU LGPL v3.0",
+  "authors": [
+    {
+      "name": "Philipp Bräutigam",
+      "email": "philipp.braeutigam@googlemail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Xynnn\\Unicorn\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Xynnn\\Unicorn\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
