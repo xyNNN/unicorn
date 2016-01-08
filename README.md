@@ -24,5 +24,5 @@ Length        | Xynnn\Unicorn\Converter  | meter, kilometer, nanometer
 + [twitter/pbraeutigam](http://twitter.com/pbraeutigam)
 
 ## License
-Copyright (c) 2015 Philipp Bräutigam
+Copyright (c) 2015 Philipp Bräutigam  
 This repository is released under the GNU LGPL v3.0 license.
