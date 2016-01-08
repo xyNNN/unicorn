@@ -1,7 +1,7 @@
 {
   "name": "xynnn/unicorn",
   "type": "library",
-  "description": "A framework agnostic libary to convert several units",
+  "description": "A framework agnostic library to convert several units",
   "keywords": [
     "converter",
     "units",
