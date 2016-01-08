@@ -12,6 +12,10 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
+Unit type     | Class         | Units
+------------- | ------------- | -------------
+Length        | Xynnn\Unicorn\Converter  | meter, kilometer, nanometer
+
 ## Authors
 
 **Philipp Bräutigam**
