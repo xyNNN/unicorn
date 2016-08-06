@@ -49,14 +49,6 @@ class Unit
     }
 
     /**
-     * @param string $name
-     */
-    public function setName(string $name)
-    {
-        $this->name = $name;
-    }
-
-    /**
      * @return string
      */
     public function getAbbreviation() : string
@@ -65,27 +57,11 @@ class Unit
     }
 
     /**
-     * @param string $abbreviation
-     */
-    public function setAbbreviation(string $abbreviation)
-    {
-        $this->abbreviation = $abbreviation;
-    }
-
-    /**
      * @return float
      */
     public function getFactor() : float
     {
         return $this->factor;
-    }
-
-    /**
-     * @param float $factor
-     */
-    public function setFactor(float $factor)
-    {
-        $this->factor = $factor;
     }
 
 }
