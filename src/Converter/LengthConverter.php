@@ -113,17 +113,17 @@ class LengthConverter extends AbstractConverter
     }
 
     /**
-     * @param Convertible $baseConvertible
-     * @param Convertible $convertibleToAdd
+     * @param Convertible $c1
+     * @param Convertible $c2
      * @return Convertible
      */
-    public function add($baseConvertible, $convertibleToAdd) {
+    public function add($c1, $c2) {
 
-        $this->normalize($baseConvertible);
-        $this->normalize($convertibleToAdd);
-        $baseConvertible->setValue($baseConvertible->getValue() + $convertibleToAdd->getValue());
+        $this->normalize($c1);
+        $this->normalize($c2);
+        $c1->setValue($c1->getValue() + $c2->getValue());
 
-        return $baseConvertible;
+        return $c1;
     }
 
 }
