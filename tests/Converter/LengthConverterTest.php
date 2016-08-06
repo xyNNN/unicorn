@@ -51,6 +51,13 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             [100, LengthConverter::UNIT_NANOMETER, 0.0001, LengthConverter::UNIT_MILLIMETER],
             [100, LengthConverter::UNIT_NANOMETER, 1.0E-5, LengthConverter::UNIT_CENTIMETER],
             [100, LengthConverter::UNIT_NANOMETER, 1.0E-6, LengthConverter::UNIT_DECIMETER],
+            [1000, LengthConverter::UNIT_METER, 0.62137119219999992, LengthConverter::UNIT_MILE],
+            [1000, LengthConverter::UNIT_METER, 1093.613298, LengthConverter::UNIT_YARD],
+            [10, LengthConverter::UNIT_METER, 10.93613298, LengthConverter::UNIT_YARD],
+            [100, LengthConverter::UNIT_METER, 328.08398950000003, LengthConverter::UNIT_FEET],
+            [1609.344, LengthConverter::UNIT_METER, 1, LengthConverter::UNIT_MILE],
+            [1, LengthConverter::UNIT_METER, 1, LengthConverter::UNIT_METER],
+            [1, LengthConverter::UNIT_INCH, 2.54, LengthConverter::UNIT_CENTIMETER]
         ];
     }
 
@@ -68,6 +75,18 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert($value, $from, $to);
 
         $this->assertEquals($expected, $result);
+    }
+
+    public function testMetricToImperialTwoWayConversion()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->convert(1000, LengthConverter::UNIT_METER, LengthConverter::UNIT_FEET),
+            LengthConverter::UNIT_FEET,
+            LengthConverter::UNIT_KILOMETER
+        );
+
+        $this->assertEquals(1, $result);
     }
 
     /**
