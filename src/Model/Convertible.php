@@ -10,7 +10,8 @@
 
 namespace Xynnn\Unicorn\Model;
 
-class Convertible {
+class Convertible
+{
 
     /**
      * @var mixed $value The actual value

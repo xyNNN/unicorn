@@ -32,7 +32,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Unit $to
      * @return void
      */
-    abstract public function convert($convertible, $to);
+    abstract public function convert(Convertible $convertible, Unit $to);
 
     /**
      * @param array $units
@@ -52,21 +52,21 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Convertible $convertible
      * @return void
      */
-    abstract protected function normalize($convertible);
+    abstract protected function normalize(Convertible $convertible);
 
     /**
      * @param $convertible
      * @param Unit $to
      * @return void
      */
-    abstract protected function convertTo($convertible, $to);
+    abstract protected function convertTo(Convertible $convertible, Unit $to);
 
     /**
      * @param Convertible $c1
      * @param Convertible $c2
      * @return Convertible
      */
-    public function add($c1, $c2)
+    public function add(Convertible $c1, Convertible $c2)
     {
         $this->normalize($c1);
         $this->normalize($c2);
@@ -80,7 +80,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Convertible $c2
      * @return Convertible
      */
-    public function substract($c1, $c2)
+    public function substract(Convertible $c1, Convertible $c2)
     {
         $this->normalize($c1);
         $this->normalize($c2);
@@ -94,7 +94,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Convertible $c2
      * @return Convertible
      */
-    public function multiply($c1, $c2)
+    public function multiply(Convertible $c1, Convertible $c2)
     {
         $this->normalize($c1);
         $this->normalize($c2);
@@ -108,7 +108,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Convertible $c2
      * @return Convertible
      */
-    public function divide($c1, $c2)
+    public function divide(Convertible $c1, Convertible $c2)
     {
         $this->normalize($c1);
         $this->normalize($c2);

@@ -59,7 +59,7 @@ class LengthConverter extends AbstractConverter
      * @param Unit $to                 Unit to which is to be converted
      * @return Convertible             Converted result
      */
-    public function convert($convertible, $to)
+    public function convert(Convertible $convertible, Unit $to)
     {
 
         if (!$convertible instanceof Convertible || !is_numeric($convertible->getValue()) || !$convertible->getUnit() instanceof Unit) {
@@ -77,7 +77,7 @@ class LengthConverter extends AbstractConverter
      * @param Convertible $convertible The Convertible to be normalized
      * @return void
      */
-    protected function normalize($convertible)
+    protected function normalize(Convertible $convertible)
     {
         switch ($convertible->getUnit()) {
             case self::$nanometer:
@@ -97,7 +97,7 @@ class LengthConverter extends AbstractConverter
      * @param Unit $to                 Unit to which is to be converted
      * @return void
      */
-    protected function convertTo($convertible, $to)
+    protected function convertTo(Convertible $convertible, Unit $to)
     {
         switch ($to) {
             case self::$nanometer:

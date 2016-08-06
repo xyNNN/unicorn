@@ -23,36 +23,35 @@ interface ConverterInterface
     /**
      * @param Convertible $convertible
      * @param Unit $to
-     *
-     * @return mixed
+     * @return void
      */
-    public function convert($convertible, $to);
+    public function convert(Convertible $convertible, Unit $to);
 
     /**
      * @param Convertible $c2
      * @param Convertible $c1
      * @return Convertible
      */
-    public function add($c1, $c2);
+    public function add(Convertible $c1, Convertible $c2);
 
     /**
      * @param Convertible $c1
      * @param Convertible $c2
      * @return Convertible
      */
-    public function substract($c1, $c2);
+    public function substract(Convertible $c1, Convertible $c2);
 
     /**
      * @param Convertible $c1
      * @param Convertible $c2
      * @return Convertible
      */
-    public function multiply($c1, $c2);
+    public function multiply(Convertible $c1, Convertible $c2);
 
     /**
      * @param Convertible $c1
      * @param Convertible $c2
      * @return Convertible
      */
-    public function divide($c1, $c2);
+    public function divide(Convertible $c1, Convertible $c2);
 }

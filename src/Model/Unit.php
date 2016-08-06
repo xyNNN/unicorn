@@ -1,13 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: steffen
- * Date: 06.08.16
- * Time: 10:39
+/*
+ * This file is part of the unicorn project
+ *
+ * (c) Philipp Braeutigam <philipp.braeutigam@googlemail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 namespace Xynnn\Unicorn\Model;
-
 
 class Unit
 {
