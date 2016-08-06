@@ -24,7 +24,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The value "string" is not convertible
+     * @expectedExceptionMessage The given Convertible is not valid for conversion.
      */
     public function testWrongValuePassed()
     {

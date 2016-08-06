@@ -63,10 +63,7 @@ class LengthConverter extends AbstractConverter
     {
 
         if (!$convertible instanceof Convertible || !is_numeric($convertible->getValue()) || !$convertible->getUnit() instanceof Unit) {
-            throw new \InvalidArgumentException(sprintf(
-                'The value "%s" is not convertible',
-                $convertible->getValue()
-            ));
+            throw new \InvalidArgumentException('The given Convertible is not valid for conversion.');
         }
 
         $this->validate([$convertible->getUnit(), $to]);
