@@ -117,8 +117,8 @@ class LengthConverter extends AbstractConverter
      * @param Convertible $c2
      * @return Convertible
      */
-    public function add($c1, $c2) {
-
+    public function add($c1, $c2)
+    {
         $this->normalize($c1);
         $this->normalize($c2);
         $c1->setValue($c1->getValue() + $c2->getValue());
@@ -126,4 +126,45 @@ class LengthConverter extends AbstractConverter
         return $c1;
     }
 
+    /**
+     * @param Convertible $c1
+     * @param Convertible $c2
+     * @return Convertible
+     */
+    public function substract($c1, $c2)
+    {
+        $this->normalize($c1);
+        $this->normalize($c2);
+        $c1->setValue($c1->getValue() - $c2->getValue());
+
+        return $c1;
+    }
+
+    /**
+     * @param Convertible $c1
+     * @param Convertible $c2
+     * @return Convertible
+     */
+    public function multiply($c1, $c2)
+    {
+        $this->normalize($c1);
+        $this->normalize($c2);
+        $c1->setValue($c1->getValue() * $c2->getValue());
+
+        return $c1;
+    }
+
+    /**
+     * @param Convertible $c1
+     * @param Convertible $c2
+     * @return Convertible
+     */
+    public function divide($c1, $c2)
+    {
+        $this->normalize($c1);
+        $this->normalize($c2);
+        $c1->setValue($c1->getValue() / $c2->getValue());
+
+        return $c1;
+    }
 }

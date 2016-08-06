@@ -100,6 +100,111 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
     }
 
+    public function testConversionWithSubstraction()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->substract(
+                new Convertible(20000, $converter::$nanometer),
+                new Convertible(10, $converter::$micrometer)
+            ),
+            $converter::$micrometer
+        );
+
+        $this->assertEquals(10, $result->getValue());
+        $this->assertEquals($converter::$micrometer, $result->getUnit());
+        $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithNestedSubstraction()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->substract(
+                $converter->substract(
+                    new Convertible(100000, $converter::$nanometer),
+                    new Convertible(10, $converter::$micrometer)
+                ),
+                new Convertible(30000, $converter::$nanometer)
+            ),
+            $converter::$micrometer
+        );
+
+        $this->assertEquals(60, $result->getValue());
+        $this->assertEquals($converter::$micrometer, $result->getUnit());
+        $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithMultiplication()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->multiply(
+                new Convertible(1, $converter::$meter),
+                new Convertible(2, $converter::$meter)
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(2, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithNestedMultiplication()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->multiply(
+                $converter->multiply(
+                    new Convertible(50, $converter::$meter),
+                    new Convertible(10, $converter::$meter)
+                ),
+                new Convertible(10, $converter::$meter)
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(5000, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithDivision()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->divide(
+                new Convertible(50, $converter::$meter),
+                new Convertible(5, $converter::$meter)
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(10, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithNestedDivision()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->divide(
+                $converter->divide(
+                    new Convertible(1000, $converter::$meter),
+                    new Convertible(10, $converter::$meter)
+                ),
+                new Convertible(10, $converter::$meter)
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(10, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
     /**
      * @return LengthConverter
      */

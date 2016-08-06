@@ -62,9 +62,31 @@ abstract class AbstractConverter implements ConverterInterface
     abstract protected function convertTo($convertible, $to);
 
     /**
-     * @param Convertible $baseConvertible
-     * @param Convertible $convertibleToAdd
+     * @param Convertible $c2
+     * @param Convertible $c1
      * @return Convertible
      */
-    abstract public function add($baseConvertible, $convertibleToAdd);
+    abstract public function add($c1, $c2);
+
+    /**
+     * @param Convertible $c1
+     * @param Convertible $c2
+     * @return Convertible
+     */
+    abstract public function substract($c1, $c2);
+
+    /**
+     * @param Convertible $c1
+     * @param Convertible $c2
+     * @return Convertible
+     */
+    abstract public function multiply($c1, $c2);
+
+    /**
+     * @param Convertible $c1
+     * @param Convertible $c2
+     * @return Convertible
+     */
+    abstract public function divide($c1, $c2);
+
 }
