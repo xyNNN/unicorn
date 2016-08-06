@@ -36,6 +36,7 @@ abstract class AbstractConverter implements ConverterInterface
 
     /**
      * @param array $units
+     * @return void
      */
     protected function validate(array $units)
     {
@@ -49,7 +50,7 @@ abstract class AbstractConverter implements ConverterInterface
 
     /**
      * @param Convertible $convertible
-     * @return mixed
+     * @return void
      */
     abstract protected function normalize($convertible);
 
@@ -59,4 +60,11 @@ abstract class AbstractConverter implements ConverterInterface
      * @return void
      */
     abstract protected function convertTo($convertible, $to);
+
+    /**
+     * @param Convertible $baseConvertible
+     * @param Convertible $convertibleToAdd
+     * @return Convertible
+     */
+    abstract public function add($baseConvertible, $convertibleToAdd);
 }

@@ -111,4 +111,18 @@ class LengthConverter extends AbstractConverter
                 break;
         }
     }
+
+    /**
+     * @param Convertible $baseConvertible
+     * @param Convertible $convertibleToAdd
+     * @return Convertible
+     */
+    public function add($baseConvertible, $convertibleToAdd) {
+
+        $this->normalize($baseConvertible);
+        $this->normalize($convertibleToAdd);
+        $baseConvertible->setValue($baseConvertible->getValue() + $convertibleToAdd->getValue());
+
+        return $baseConvertible;
+    }
 }

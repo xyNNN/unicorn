@@ -65,6 +65,22 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('nm', $result->getUnit()->getAbbreviation());
     }
 
+    public function testConversionWithAddition()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->add(
+                new Convertible(10000, $converter::$nanometer),
+                new Convertible(10, $converter::$micrometer)
+            ),
+            $converter::$micrometer
+        );
+
+        $this->assertEquals(20, $result->getValue());
+        $this->assertEquals($converter::$micrometer, $result->getUnit());
+        $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
+    }
+
     /**
      * @return LengthConverter
      */
