@@ -15,7 +15,7 @@ class UnsupportedOperationException extends \LogicException
     /**
      * @param string $operation
      */
-    public function __construct($operation)
+    public function __construct(string $operation)
     {
         parent::__construct(sprintf(
             'The operation "%s" is not possible or not implemented yet.',

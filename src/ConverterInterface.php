@@ -18,47 +18,55 @@ interface ConverterInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName() : string;
 
     /**
      * @param ConvertibleValue $from
      * @param Unit $to
-     * @return void
+     * @return ConvertibleValue
      */
-    public function convert(ConvertibleValue $from, Unit $to);
+    public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue;
 
     /**
      * @param ConvertibleValue $cv2
      * @param ConvertibleValue $cv1
      * @return ConvertibleValue
      */
-    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2);
+    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
 
     /**
      * @param ConvertibleValue $cv1
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2);
+    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
 
     /**
      * @param ConvertibleValue $cv1
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2);
+    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
 
     /**
      * @param ConvertibleValue $cv1
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2);
+    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
 
     /**
      * @param ConvertibleValue $cv
      * @param int $power
-     * @return mixed
+     * @return ConvertibleValue
      */
-    public function exponentiate(ConvertibleValue $cv, int $power);
+    public function exponentiate(ConvertibleValue $cv, int $power) : ConvertibleValue;
+
+    /**
+     * @param ConvertibleValue $cv
+     * @param int $nthRoot
+     * @return ConvertibleValue
+     */
+    public function root(ConvertibleValue $cv, int $nthRoot) : ConvertibleValue;
+
 }

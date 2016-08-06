@@ -229,10 +229,64 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('m', $result->getUnit()->getAbbreviation());
     }
 
+    public function testConversionWithNestedExponentiation()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->exponentiate(
+                $converter->exponentiate(
+                    new ConvertibleValue(2, $converter::$meter),
+                    3
+                ),
+                2
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(64, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithRoot()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->root(
+                new ConvertibleValue(8, $converter::$meter),
+                3
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(2, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testConversionWithNestedRoot()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->root(
+                $converter->root(
+                    new ConvertibleValue(64, $converter::$meter),
+                    2
+                ),
+                3
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(2, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
     /**
      * @return LengthConverter
      */
-    private function getConverter()
+    private function getConverter() : LengthConverter
     {
         return new LengthConverter();
     }

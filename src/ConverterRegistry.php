@@ -22,7 +22,7 @@ class ConverterRegistry
     /**
      * ConverterRegistry constructor.
      *
-     * @param array|ConverterInterface[] $converters
+     * @param ConverterInterface[] $converters
      */
     public function __construct(array $converters)
     {
@@ -33,11 +33,11 @@ class ConverterRegistry
     }
 
     /**
-     * @param $name
+     * @param string $name
      *
      * @return ConverterInterface
      */
-    public function get($name)
+    public function get(string $name) : ConverterInterface
     {
         if (!isset($this->converters[$name])) {
             throw new UnsupportedConverterException($name);

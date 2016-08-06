@@ -37,7 +37,7 @@ class ConvertibleValue
     /**
      * @return mixed
      */
-    public function getValue()
+    public function getValue() : string
     {
         return $this->value;
     }
@@ -53,7 +53,7 @@ class ConvertibleValue
     /**
      * @return Unit
      */
-    public function getUnit()
+    public function getUnit() : Unit
     {
         return $this->unit;
     }
@@ -61,7 +61,7 @@ class ConvertibleValue
     /**
      * @param Unit $unit
      */
-    public function setUnit($unit)
+    public function setUnit(Unit $unit)
     {
         $this->unit = $unit;
     }

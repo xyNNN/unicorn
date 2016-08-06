@@ -43,7 +43,7 @@ class ConverterRegistryTest extends \PHPUnit_Framework_TestCase
     /**
      * @return ConverterRegistry
      */
-    private function getRegistry()
+    private function getRegistry() : ConverterRegistry
     {
         $registry = new ConverterRegistry([new LengthConverter()]);
 

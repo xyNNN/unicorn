@@ -49,7 +49,7 @@ class LengthConverter extends AbstractConverter
     /**
      * @return string Name of the converter
      */
-    public function getName()
+    public function getName() : string
     {
         return 'unicorn.converter.length';
     }
@@ -59,7 +59,7 @@ class LengthConverter extends AbstractConverter
      * @param Unit $to               Unit to which is to be converted
      * @return ConvertibleValue      Converted result
      */
-    public function convert(ConvertibleValue $from, Unit $to)
+    public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue
     {
 
         if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
@@ -75,7 +75,6 @@ class LengthConverter extends AbstractConverter
 
     /**
      * @param ConvertibleValue $cv The Convertible to be normalized
-     * @return void
      */
     protected function normalize(ConvertibleValue $cv)
     {
@@ -95,7 +94,6 @@ class LengthConverter extends AbstractConverter
     /**
      * @param ConvertibleValue $from The convertible to be converted
      * @param Unit $to               Unit to which is to be converted
-     * @return void
      */
     protected function convertTo(ConvertibleValue $from, Unit $to)
     {

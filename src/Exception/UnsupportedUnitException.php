@@ -17,7 +17,7 @@ class UnsupportedUnitException extends \InvalidArgumentException
     /**
      * @param Unit $unit
      */
-    public function __construct($unit)
+    public function __construct(Unit $unit)
     {
         parent::__construct(sprintf(
             'The conversion of "%s" is not possible. Make sure to use the static units from the converter instance.',

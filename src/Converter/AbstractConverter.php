@@ -25,18 +25,17 @@ abstract class AbstractConverter implements ConverterInterface
     /**
      * @return string
      */
-    abstract public function getName();
+    abstract public function getName() : string;
 
-    /**$from
+    /**
      * @param ConvertibleValue $from
      * @param Unit $to
-     * @return void
+     * @return ConvertibleValue
      */
-    abstract public function convert(ConvertibleValue $from, Unit $to);
+    abstract public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue;
 
     /**
      * @param array $units
-     * @return void
      */
     protected function validate(array $units)
     {
@@ -50,14 +49,12 @@ abstract class AbstractConverter implements ConverterInterface
 
     /**
      * @param ConvertibleValue $cv
-     * @return void
      */
     abstract protected function normalize(ConvertibleValue $cv);
 
     /**
      * @param ConvertibleValue $from
      * @param Unit $to
-     * @return void
      */
     abstract protected function convertTo(ConvertibleValue $from, Unit $to);
 
@@ -66,7 +63,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2)
+    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue
     {
         $this->normalize($cv1);
         $this->normalize($cv2);
@@ -80,7 +77,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2)
+    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue
     {
         $this->normalize($cv1);
         $this->normalize($cv2);
@@ -94,7 +91,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2)
+    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue
     {
         $this->normalize($cv1);
         $this->normalize($cv2);
@@ -108,7 +105,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2)
+    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue
     {
         $this->normalize($cv1);
         $this->normalize($cv2);
@@ -122,9 +119,21 @@ abstract class AbstractConverter implements ConverterInterface
      * @param int $power
      * @return ConvertibleValue
      */
-    public function exponentiate(ConvertibleValue $cv, int $power)
+    public function exponentiate(ConvertibleValue $cv, int $power) : ConvertibleValue
     {
         $cv->setValue(pow($cv->getValue(), $power));
+
+        return $cv;
+    }
+
+    /**
+     * @param ConvertibleValue $cv
+     * @param int $nthRoot
+     * @return ConvertibleValue
+     */
+    public function root(ConvertibleValue $cv, int $nthRoot) : ConvertibleValue
+    {
+        $cv->setValue(pow($cv->getValue(), 1/$nthRoot));
 
         return $cv;
     }
