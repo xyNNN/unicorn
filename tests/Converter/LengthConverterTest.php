@@ -42,7 +42,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter->convert(new Convertible(10000, $converter::$nanometer), new Unit('micrometer', 'µm', 1000000));
     }
 
-    public function testConvert()
+    public function testConversion()
     {
         $converter = $this->getConverter();
         $result = $converter->convert(new Convertible(10000, $converter::$nanometer), $converter::$micrometer);
