@@ -12,7 +12,7 @@ namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\ConverterInterface;
 use Xynnn\Unicorn\Exception\UnsupportedUnitException;
-use Xynnn\Unicorn\Model\Convertible;
+use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
 abstract class AbstractConverter implements ConverterInterface
@@ -28,11 +28,11 @@ abstract class AbstractConverter implements ConverterInterface
     abstract public function getName();
 
     /**$from
-     * @param Convertible $convertible
+     * @param ConvertibleValue $from
      * @param Unit $to
      * @return void
      */
-    abstract public function convert(Convertible $convertible, Unit $to);
+    abstract public function convert(ConvertibleValue $from, Unit $to);
 
     /**
      * @param array $units
@@ -49,72 +49,72 @@ abstract class AbstractConverter implements ConverterInterface
     }
 
     /**
-     * @param Convertible $convertible
+     * @param ConvertibleValue $cv
      * @return void
      */
-    abstract protected function normalize(Convertible $convertible);
+    abstract protected function normalize(ConvertibleValue $cv);
 
     /**
-     * @param $convertible
+     * @param ConvertibleValue $from
      * @param Unit $to
      * @return void
      */
-    abstract protected function convertTo(Convertible $convertible, Unit $to);
+    abstract protected function convertTo(ConvertibleValue $from, Unit $to);
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function add(Convertible $c1, Convertible $c2)
+    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2)
     {
-        $this->normalize($c1);
-        $this->normalize($c2);
-        $c1->setValue($c1->getValue() + $c2->getValue());
+        $this->normalize($cv1);
+        $this->normalize($cv2);
+        $cv1->setValue($cv1->getValue() + $cv2->getValue());
 
-        return $c1;
+        return $cv1;
     }
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function substract(Convertible $c1, Convertible $c2)
+    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2)
     {
-        $this->normalize($c1);
-        $this->normalize($c2);
-        $c1->setValue($c1->getValue() - $c2->getValue());
+        $this->normalize($cv1);
+        $this->normalize($cv2);
+        $cv1->setValue($cv1->getValue() - $cv2->getValue());
 
-        return $c1;
+        return $cv1;
     }
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function multiply(Convertible $c1, Convertible $c2)
+    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2)
     {
-        $this->normalize($c1);
-        $this->normalize($c2);
-        $c1->setValue($c1->getValue() * $c2->getValue());
+        $this->normalize($cv1);
+        $this->normalize($cv2);
+        $cv1->setValue($cv1->getValue() * $cv2->getValue());
 
-        return $c1;
+        return $cv1;
     }
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function divide(Convertible $c1, Convertible $c2)
+    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2)
     {
-        $this->normalize($c1);
-        $this->normalize($c2);
-        $c1->setValue($c1->getValue() / $c2->getValue());
+        $this->normalize($cv1);
+        $this->normalize($cv2);
+        $cv1->setValue($cv1->getValue() / $cv2->getValue());
 
-        return $c1;
+        return $cv1;
     }
 
 }

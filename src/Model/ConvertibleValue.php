@@ -10,7 +10,7 @@
 
 namespace Xynnn\Unicorn\Model;
 
-class Convertible
+class ConvertibleValue
 {
 
     /**

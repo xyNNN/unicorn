@@ -11,7 +11,7 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\Model\Unit;
-use Xynnn\Unicorn\Model\Convertible;
+use Xynnn\Unicorn\Model\ConvertibleValue;
 
 class LengthConverter extends AbstractConverter
 {
@@ -55,59 +55,59 @@ class LengthConverter extends AbstractConverter
     }
 
     /**
-     * @param Convertible $convertible Value to be converted
-     * @param Unit $to                 Unit to which is to be converted
-     * @return Convertible             Converted result
+     * @param ConvertibleValue $from ConvertibleValue to be converted
+     * @param Unit $to               Unit to which is to be converted
+     * @return ConvertibleValue      Converted result
      */
-    public function convert(Convertible $convertible, Unit $to)
+    public function convert(ConvertibleValue $from, Unit $to)
     {
 
-        if (!$convertible instanceof Convertible || !is_numeric($convertible->getValue()) || !$convertible->getUnit() instanceof Unit) {
+        if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
             throw new \InvalidArgumentException('The given Convertible is not valid for conversion.');
         }
 
-        $this->validate([$convertible->getUnit(), $to]);
-        $this->normalize($convertible);
-        $this->convertTo($convertible, $to);
+        $this->validate([$from->getUnit(), $to]);
+        $this->normalize($from);
+        $this->convertTo($from, $to);
 
-        return $convertible;
+        return $from;
     }
 
     /**
-     * @param Convertible $convertible The Convertible to be normalized
+     * @param ConvertibleValue $cv The Convertible to be normalized
      * @return void
      */
-    protected function normalize(Convertible $convertible)
+    protected function normalize(ConvertibleValue $cv)
     {
-        switch ($convertible->getUnit()) {
+        switch ($cv->getUnit()) {
             case self::$nanometer:
-                $convertible->setValue($convertible->getValue() / self::$nanometer->getFactor());
+                $cv->setValue($cv->getValue() / self::$nanometer->getFactor());
                 break;
 
             case self::$micrometer:
-                $convertible->setValue($convertible->getValue() / self::$micrometer->getFactor());
+                $cv->setValue($cv->getValue() / self::$micrometer->getFactor());
                 break;
         }
 
-        $convertible->setUnit(self::$meter);
+        $cv->setUnit(self::$meter);
     }
 
     /**
-     * @param Convertible $convertible The convertible to be converted
-     * @param Unit $to                 Unit to which is to be converted
+     * @param ConvertibleValue $from The convertible to be converted
+     * @param Unit $to               Unit to which is to be converted
      * @return void
      */
-    protected function convertTo(Convertible $convertible, Unit $to)
+    protected function convertTo(ConvertibleValue $from, Unit $to)
     {
         switch ($to) {
             case self::$nanometer:
-                $convertible->setValue($convertible->getValue() * self::$nanometer->getFactor());
-                $convertible->setUnit(self::$nanometer);
+                $from->setValue($from->getValue() * self::$nanometer->getFactor());
+                $from->setUnit(self::$nanometer);
                 break;
 
             case self::$micrometer:
-                $convertible->setValue($convertible->getValue() * self::$micrometer->getFactor());
-                $convertible->setUnit(self::$micrometer);
+                $from->setValue($from->getValue() * self::$micrometer->getFactor());
+                $from->setUnit(self::$micrometer);
                 break;
         }
     }

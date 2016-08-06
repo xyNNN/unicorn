@@ -11,7 +11,7 @@
 namespace Xynnn\Unicorn\Tests\Converter;
 
 use Xynnn\Unicorn\Converter\LengthConverter;
-use Xynnn\Unicorn\Model\Convertible;
+use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
 class LengthConverterTest extends \PHPUnit_Framework_TestCase
@@ -37,7 +37,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
     public function testWrongValuePassed()
     {
         $converter = $this->getConverter();
-        $converter->convert(new Convertible('string', $converter::$nanometer), $converter::$micrometer);
+        $converter->convert(new ConvertibleValue('string', $converter::$nanometer), $converter::$micrometer);
     }
 
     /**
@@ -47,13 +47,13 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
     public function testWrongTypePassed()
     {
         $converter = $this->getConverter();
-        $converter->convert(new Convertible(10000, $converter::$nanometer), new Unit('micrometer', 'µm', 1000000));
+        $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), new Unit('micrometer', 'µm', 1000000));
     }
 
     public function testConversion()
     {
         $converter = $this->getConverter();
-        $result = $converter->convert(new Convertible(10000, $converter::$nanometer), $converter::$micrometer);
+        $result = $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), $converter::$micrometer);
 
         $this->assertEquals(10, $result->getValue());
         $this->assertEquals($converter::$micrometer, $result->getUnit());
@@ -64,7 +64,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
     {
         $converter = $this->getConverter();
         $result = $converter->convert(
-            $converter->convert(new Convertible(10000, $converter::$nanometer), $converter::$micrometer),
+            $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), $converter::$micrometer),
             $converter::$nanometer
         );
 
@@ -78,8 +78,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
         $result = $converter->convert(
             $converter->add(
-                new Convertible(10000, $converter::$nanometer),
-                new Convertible(10, $converter::$micrometer)
+                new ConvertibleValue(10000, $converter::$nanometer),
+                new ConvertibleValue(10, $converter::$micrometer)
             ),
             $converter::$micrometer
         );
@@ -95,10 +95,10 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert(
             $converter->add(
                 $converter->add(
-                    new Convertible(10000, $converter::$nanometer),
-                    new Convertible(10, $converter::$micrometer)
+                    new ConvertibleValue(10000, $converter::$nanometer),
+                    new ConvertibleValue(10, $converter::$micrometer)
                 ),
-                new Convertible(30000, $converter::$nanometer)
+                new ConvertibleValue(30000, $converter::$nanometer)
             ),
             $converter::$micrometer
         );
@@ -113,8 +113,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
         $result = $converter->convert(
             $converter->substract(
-                new Convertible(20000, $converter::$nanometer),
-                new Convertible(10, $converter::$micrometer)
+                new ConvertibleValue(20000, $converter::$nanometer),
+                new ConvertibleValue(10, $converter::$micrometer)
             ),
             $converter::$micrometer
         );
@@ -130,10 +130,10 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert(
             $converter->substract(
                 $converter->substract(
-                    new Convertible(100000, $converter::$nanometer),
-                    new Convertible(10, $converter::$micrometer)
+                    new ConvertibleValue(100000, $converter::$nanometer),
+                    new ConvertibleValue(10, $converter::$micrometer)
                 ),
-                new Convertible(30000, $converter::$nanometer)
+                new ConvertibleValue(30000, $converter::$nanometer)
             ),
             $converter::$micrometer
         );
@@ -148,8 +148,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
         $result = $converter->convert(
             $converter->multiply(
-                new Convertible(1, $converter::$meter),
-                new Convertible(2, $converter::$meter)
+                new ConvertibleValue(1, $converter::$meter),
+                new ConvertibleValue(2, $converter::$meter)
             ),
             $converter::$meter
         );
@@ -165,10 +165,10 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert(
             $converter->multiply(
                 $converter->multiply(
-                    new Convertible(50, $converter::$meter),
-                    new Convertible(10, $converter::$meter)
+                    new ConvertibleValue(50, $converter::$meter),
+                    new ConvertibleValue(10, $converter::$meter)
                 ),
-                new Convertible(10, $converter::$meter)
+                new ConvertibleValue(10, $converter::$meter)
             ),
             $converter::$meter
         );
@@ -183,8 +183,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
         $result = $converter->convert(
             $converter->divide(
-                new Convertible(50, $converter::$meter),
-                new Convertible(5, $converter::$meter)
+                new ConvertibleValue(50, $converter::$meter),
+                new ConvertibleValue(5, $converter::$meter)
             ),
             $converter::$meter
         );
@@ -200,10 +200,10 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert(
             $converter->divide(
                 $converter->divide(
-                    new Convertible(1000, $converter::$meter),
-                    new Convertible(10, $converter::$meter)
+                    new ConvertibleValue(1000, $converter::$meter),
+                    new ConvertibleValue(10, $converter::$meter)
                 ),
-                new Convertible(10, $converter::$meter)
+                new ConvertibleValue(10, $converter::$meter)
             ),
             $converter::$meter
         );

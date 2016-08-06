@@ -10,7 +10,7 @@
 
 namespace Xynnn\Unicorn;
 
-use Xynnn\Unicorn\Model\Convertible;
+use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
 interface ConverterInterface
@@ -21,37 +21,37 @@ interface ConverterInterface
     public function getName();
 
     /**
-     * @param Convertible $convertible
+     * @param ConvertibleValue $from
      * @param Unit $to
      * @return void
      */
-    public function convert(Convertible $convertible, Unit $to);
+    public function convert(ConvertibleValue $from, Unit $to);
 
     /**
-     * @param Convertible $c2
-     * @param Convertible $c1
-     * @return Convertible
+     * @param ConvertibleValue $cv2
+     * @param ConvertibleValue $cv1
+     * @return ConvertibleValue
      */
-    public function add(Convertible $c1, Convertible $c2);
+    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2);
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function substract(Convertible $c1, Convertible $c2);
+    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2);
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function multiply(Convertible $c1, Convertible $c2);
+    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2);
 
     /**
-     * @param Convertible $c1
-     * @param Convertible $c2
-     * @return Convertible
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return ConvertibleValue
      */
-    public function divide(Convertible $c1, Convertible $c2);
+    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2);
 }
