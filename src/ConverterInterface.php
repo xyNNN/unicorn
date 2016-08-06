@@ -54,4 +54,11 @@ interface ConverterInterface
      * @return ConvertibleValue
      */
     public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2);
+
+    /**
+     * @param ConvertibleValue $cv
+     * @param int $power
+     * @return mixed
+     */
+    public function exponentiate(ConvertibleValue $cv, int $power);
 }

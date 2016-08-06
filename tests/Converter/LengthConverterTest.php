@@ -213,6 +213,22 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('m', $result->getUnit()->getAbbreviation());
     }
 
+    public function testConversionWithExponentiation()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->convert(
+            $converter->exponentiate(
+                new ConvertibleValue(2, $converter::$meter),
+                3
+            ),
+            $converter::$meter
+        );
+
+        $this->assertEquals(8, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
     /**
      * @return LengthConverter
      */

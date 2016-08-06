@@ -117,4 +117,16 @@ abstract class AbstractConverter implements ConverterInterface
         return $cv1;
     }
 
+    /**
+     * @param ConvertibleValue $cv
+     * @param int $power
+     * @return ConvertibleValue
+     */
+    public function exponentiate(ConvertibleValue $cv, int $power)
+    {
+        $cv->setValue(pow($cv->getValue(), $power));
+
+        return $cv;
+    }
+
 }
