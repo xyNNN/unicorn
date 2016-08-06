@@ -10,9 +10,10 @@
 
 namespace Xynnn\Unicorn\Converter;
 
-use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Xynnn\Unicorn\ConverterInterface;
-use Xynnn\Unicorn\Exception\UnsupportedConverterException;
+use Xynnn\Unicorn\Exception\UnsupportedConversionException;
+use Xynnn\Unicorn\Model\Convertible;
+use Xynnn\Unicorn\Model\Unit;
 
 abstract class AbstractConverter implements ConverterInterface
 {
@@ -26,14 +27,12 @@ abstract class AbstractConverter implements ConverterInterface
      */
     abstract public function getName();
 
-    /**
-     * @param mixed  $value
-     * @param string $from
-     * @param string $to
-     *
-     * @return mixed
+    /**$from
+     * @param Convertible $convertible
+     * @param Unit $to
+     * @return void
      */
-    abstract public function convert($value, $from, $to);
+    abstract public function convert($convertible, $to);
 
     /**
      * @param array $units
@@ -41,25 +40,23 @@ abstract class AbstractConverter implements ConverterInterface
     protected function validate(array $units)
     {
         foreach ($units as $unit) {
-            if (!in_array($unit, $this->units)) {
-                throw new UnsupportedConverterException($unit);
+            // make sure the unit is not just an instance of Unit, but the real same instance from the LengthConverter
+            if (!in_array($unit, $this->units, true)) {
+                throw new UnsupportedConversionException($unit);
             }
         }
     }
 
     /**
-     * @param mixed  $value
-     * @param string $from
-     *
+     * @param Convertible $convertible
      * @return mixed
      */
-    abstract protected function normalize($value, $from);
+    abstract protected function normalize($convertible);
 
     /**
-     * @param mixed  $value
-     * @param string $to
-     *
-     * @return mixed
+     * @param $convertible
+     * @param Unit $to
+     * @return void
      */
-    abstract protected function convertTo($value, $to);
+    abstract protected function convertTo($convertible, $to);
 }

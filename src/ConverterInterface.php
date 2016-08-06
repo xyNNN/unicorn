@@ -10,6 +10,9 @@
 
 namespace Xynnn\Unicorn;
 
+use Xynnn\Unicorn\Model\Convertible;
+use Xynnn\Unicorn\Model\Unit;
+
 interface ConverterInterface
 {
     /**
@@ -18,11 +21,10 @@ interface ConverterInterface
     public function getName();
 
     /**
-     * @param mixed $value
-     * @param mixed$from
-     * @param mixed $to
+     * @param Convertible $convertible
+     * @param Unit $to
      *
      * @return mixed
      */
-    public function convert($value, $from, $to);
+    public function convert($convertible, $to);
 }

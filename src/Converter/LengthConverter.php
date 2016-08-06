@@ -10,55 +10,41 @@
 
 namespace Xynnn\Unicorn\Converter;
 
+use Xynnn\Unicorn\Model\Unit;
+use Xynnn\Unicorn\Model\Convertible;
+
 class LengthConverter extends AbstractConverter
 {
 
     /**
-     * Names of length units
+     * @var Unit $nanometer Static nanometer instance for conversions
      */
-    const UNIT_NANOMETER = 'nanometer';
-    const UNIT_MICROMETER = 'micrometer';
-    const UNIT_MILLIMETER = 'millimeter';
-    const UNIT_CENTIMETER = 'centimeter';
-    const UNIT_DECIMETER = 'decimeter';
-    const UNIT_METER = 'meter';
-    const UNIT_KILOMETER = 'kilometer';
-    const UNIT_INCH = 'inch';
-    const UNIT_FEET = 'feet';
-    const UNIT_YARD = 'yard';
-    const UNIT_MILE = 'mile';
+    public static $nanometer;
 
     /**
-     * Factors for normalization to meter
+     * @var Unit $micrometer Static nanometer instance for conversions
      */
-    const FACTOR_NANOMETER = 1000000000;
-    const FACTOR_MICROMETER = 1000000;
-    const FACTOR_MILLIMETER = 1000;
-    const FACTOR_CENTIMETER = 100;
-    const FACTOR_DECIMETER = 10;
-    const FACTOR_METER = 1;
-    const FACTOR_KILOMETER = 0.001;
-    const FACTOR_INCH = 39.37007874;
-    const FACTOR_FEET = 3.280839895;
-    const FACTOR_YARD = 1.093613298;
-    const FACTOR_MILE = 0.0006213711922;
+    public static $micrometer;
+
+    /**
+     * @var Unit $meter Static nanometer instance for conversions
+     */
+    public static $meter;
 
     /**
      * @var array List of convertible units
      */
-    protected $units = [
-        self::UNIT_NANOMETER,
-        self::UNIT_MICROMETER,
-        self::UNIT_MILLIMETER,
-        self::UNIT_CENTIMETER,
-        self::UNIT_DECIMETER,
-        self::UNIT_METER,
-        self::UNIT_KILOMETER,
-        self::UNIT_INCH,
-        self::UNIT_FEET,
-        self::UNIT_YARD,
-        self::UNIT_MILE
-    ];
+    protected $units = [];
+
+    /**
+     * LengthConverter constructor.
+     */
+    public function __construct()
+    {
+        array_push($this->units, self::$nanometer = new Unit('nanometer', 'nm', 1000000000));
+        array_push($this->units, self::$micrometer = new Unit('micrometer', 'µm', 1000000));
+        array_push($this->units, self::$meter = new Unit('meter', 'm', 1));
+    }
 
     /**
      * @return string Name of the converter
@@ -69,128 +55,63 @@ class LengthConverter extends AbstractConverter
     }
 
     /**
-     * @param float $value Value to be converted
-     * @param string $from Unit from which is to be converted
-     * @param string $to   Unit to which is to be converted
-     * @return float       Converted value
+     * @param Convertible $convertible Value to be converted
+     * @param Unit $to                 Unit to which is to be converted
+     * @return Convertible             Converted result
      */
-    public function convert($value, $from, $to)
+    public function convert($convertible, $to)
     {
-        if (!is_numeric($value)) {
+
+        if (!$convertible instanceof Convertible || !is_numeric($convertible->getValue()) || !$convertible->getUnit() instanceof Unit) {
             throw new \InvalidArgumentException(sprintf(
-                'The value "%s" is not a numeric value',
-                $value
+                'The value "%s" is not convertible',
+                $convertible->getValue()
             ));
         }
 
-        $this->validate([$from, $to]);
-        $value = $this->normalize($value, $from);
-        $convertedValue = $this->convertTo($value, $to);
+        $this->validate([$convertible->getUnit(), $to]);
+        $this->normalize($convertible);
+        $this->convertTo($convertible, $to);
 
-        return $convertedValue;
+        return $convertible;
     }
 
     /**
-     * @param float $value Value to be normalized to meters
-     * @param string $from Unit to be normalized from
-     * @return float       Normalized value
+     * @param Convertible $convertible The Convertible to be normalized
+     * @return void
      */
-    protected function normalize($value, $from)
+    protected function normalize($convertible)
     {
-        switch ($from) {
-            case self::UNIT_NANOMETER:
-                $value = $value / self::FACTOR_NANOMETER;
+        switch ($convertible->getUnit()) {
+            case self::$nanometer:
+                $convertible->setValue($convertible->getValue() / self::$nanometer->getFactor());
                 break;
 
-            case self::UNIT_MICROMETER:
-                $value = $value / self::FACTOR_MICROMETER;
-                break;
-
-            case self::UNIT_MILLIMETER:
-                $value = $value / self::FACTOR_MILLIMETER;
-                break;
-
-            case self::UNIT_CENTIMETER:
-                $value = $value / self::FACTOR_CENTIMETER;
-                break;
-
-            case self::UNIT_DECIMETER:
-                $value = $value / self::FACTOR_DECIMETER;
-                break;
-
-            case self::UNIT_KILOMETER:
-                $value = $value / self::FACTOR_KILOMETER;
-                break;
-
-            case self::UNIT_INCH:
-                $value = $value / self::FACTOR_INCH;
-                break;
-
-            case self::UNIT_FEET:
-                $value = $value / self::FACTOR_FEET;
-                break;
-
-            case self::UNIT_YARD:
-                $value = $value / self::FACTOR_YARD;
-                break;
-
-            case self::UNIT_MILE:
-                $value = $value / self::FACTOR_MILE;
+            case self::$micrometer:
+                $convertible->setValue($convertible->getValue() / self::$micrometer->getFactor());
                 break;
         }
 
-        return floatval($value);
+        $convertible->setUnit(self::$meter);
     }
 
     /**
-     * @param float $value Value to be converted
-     * @param string $to   Unit to which is to be converted
-     * @return float       Converted value
+     * @param Convertible $convertible The convertible to be converted
+     * @param Unit $to                 Unit to which is to be converted
+     * @return void
      */
-    protected function convertTo($value, $to)
+    protected function convertTo($convertible, $to)
     {
         switch ($to) {
-            case self::UNIT_NANOMETER:
-                $value = $value * self::FACTOR_NANOMETER;
+            case self::$nanometer:
+                $convertible->setValue($convertible->getValue() * self::$nanometer->getFactor());
+                $convertible->setUnit(self::$nanometer);
                 break;
 
-            case self::UNIT_MICROMETER:
-                $value = $value * self::FACTOR_MICROMETER;
-                break;
-
-            case self::UNIT_MILLIMETER:
-                $value = $value * self::FACTOR_MILLIMETER;
-                break;
-
-            case self::UNIT_CENTIMETER:
-                $value = $value * self::FACTOR_CENTIMETER;
-                break;
-
-            case self::UNIT_DECIMETER:
-                $value = $value * self::FACTOR_DECIMETER;
-                break;
-
-            case self::UNIT_KILOMETER:
-                $value = $value * self::FACTOR_KILOMETER;
-                break;
-
-            case self::UNIT_INCH:
-                $value = $value * self::FACTOR_INCH;
-                break;
-
-            case self::UNIT_FEET:
-                $value = $value * self::FACTOR_FEET;
-                break;
-
-            case self::UNIT_YARD:
-                $value = $value * self::FACTOR_YARD;
-                break;
-
-            case self::UNIT_MILE:
-                $value = $value * self::FACTOR_MILE;
+            case self::$micrometer:
+                $convertible->setValue($convertible->getValue() * self::$micrometer->getFactor());
+                $convertible->setUnit(self::$micrometer);
                 break;
         }
-
-        return floatval($value);
     }
 }

@@ -10,16 +10,18 @@
 
 namespace Xynnn\Unicorn\Exception;
 
-class UnsupportedConverterException extends \InvalidArgumentException
+use Xynnn\Unicorn\Model\Unit;
+
+class UnsupportedConversionException extends \InvalidArgumentException
 {
     /**
-     * @param string $name
+     * @param Unit $unit
      */
-    public function __construct($name)
+    public function __construct($unit)
     {
         parent::__construct(sprintf(
-            'The given converter "%s" is not known',
-            $name
+            'The converter for "%s" is not known. The unit must be an instance of the converters static conversion variables.',
+            $unit->getName()
         ));
     }
 }
