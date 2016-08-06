@@ -57,7 +57,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             [100, LengthConverter::UNIT_METER, 328.08398950000003, LengthConverter::UNIT_FEET],
             [1609.344, LengthConverter::UNIT_METER, 1, LengthConverter::UNIT_MILE],
             [1, LengthConverter::UNIT_METER, 1, LengthConverter::UNIT_METER],
-            [1, LengthConverter::UNIT_INCH, 2.54, LengthConverter::UNIT_CENTIMETER]
+            [1, LengthConverter::UNIT_INCH, 2.54, LengthConverter::UNIT_CENTIMETER],
+            [1, LengthConverter::UNIT_DECIMETER, 10, LengthConverter::UNIT_CENTIMETER]
         ];
     }
 

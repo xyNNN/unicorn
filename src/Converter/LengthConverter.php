@@ -115,7 +115,7 @@ class LengthConverter extends AbstractConverter
                 break;
 
             case self::UNIT_DECIMETER:
-                $value = $value / self::FACTOR_METER;
+                $value = $value / self::FACTOR_DECIMETER;
                 break;
 
             case self::UNIT_KILOMETER:
