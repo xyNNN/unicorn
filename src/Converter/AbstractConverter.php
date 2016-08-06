@@ -11,7 +11,7 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\ConverterInterface;
-use Xynnn\Unicorn\Exception\UnsupportedConversionException;
+use Xynnn\Unicorn\Exception\UnsupportedUnitException;
 use Xynnn\Unicorn\Model\Convertible;
 use Xynnn\Unicorn\Model\Unit;
 
@@ -42,7 +42,7 @@ abstract class AbstractConverter implements ConverterInterface
         foreach ($units as $unit) {
             // make sure the unit is not just an instance of Unit, but the real same instance from the LengthConverter
             if (!in_array($unit, $this->units, true)) {
-                throw new UnsupportedConversionException($unit);
+                throw new UnsupportedUnitException($unit);
             }
         }
     }

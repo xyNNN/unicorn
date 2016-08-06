@@ -12,7 +12,7 @@ namespace Xynnn\Unicorn\Exception;
 
 use Xynnn\Unicorn\Model\Unit;
 
-class UnsupportedConversionException extends \InvalidArgumentException
+class UnsupportedUnitException extends \InvalidArgumentException
 {
     /**
      * @param Unit $unit
@@ -20,7 +20,7 @@ class UnsupportedConversionException extends \InvalidArgumentException
     public function __construct($unit)
     {
         parent::__construct(sprintf(
-            'The converter for "%s" is not known. The unit must be an instance of the converters static conversion variables.',
+            'The conversion of "%s" is not possible. Make sure to use the static units from the converter instance.',
             $unit->getName()
         ));
     }

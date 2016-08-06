@@ -33,8 +33,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Xynnn\Unicorn\Exception\UnsupportedConversionException
-     * @expectedExceptionMessage The converter for "micrometer" is not known. The unit must be an instance of the converters static conversion variables.
+     * @expectedException \Xynnn\Unicorn\Exception\UnsupportedUnitException
+     * @expectedExceptionMessage The conversion of "micrometer" is not possible. Make sure to use the static units from the converter instance.
      */
     public function testWrongTypePassed()
     {
