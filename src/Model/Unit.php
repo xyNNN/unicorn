@@ -11,7 +11,6 @@ namespace Xynnn\Unicorn\Model;
 
 class Unit
 {
-
     /**
      * @var string $name Name of the unit
      */
@@ -63,5 +62,4 @@ class Unit
     {
         return $this->factor;
     }
-
 }

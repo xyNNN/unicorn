@@ -15,7 +15,6 @@ use Xynnn\Unicorn\Model\ConvertibleValue;
 
 class LengthConverter extends AbstractMathematicalConverter
 {
-
     /**
      * @var Unit $nanometer Static nanometer instance for conversions
      */
@@ -61,7 +60,6 @@ class LengthConverter extends AbstractMathematicalConverter
      */
     public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue
     {
-
         if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
             throw new \InvalidArgumentException('The given Convertible is not valid for conversion.');
         }

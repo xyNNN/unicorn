@@ -12,7 +12,6 @@ namespace Xynnn\Unicorn\Model;
 
 class ConvertibleValue
 {
-
     /**
      * @var mixed $value The actual value
      */
@@ -65,5 +64,4 @@ class ConvertibleValue
     {
         $this->unit = $unit;
     }
-
 }

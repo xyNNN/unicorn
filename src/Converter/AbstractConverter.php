@@ -57,5 +57,4 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Unit $to
      */
     abstract protected function convertTo(ConvertibleValue $from, Unit $to);
-
 }
