@@ -25,14 +25,14 @@ abstract class AbstractConverter implements ConverterInterface
     /**
      * @return string
      */
-    abstract public function getName() : string;
+    abstract public function getName(): string;
 
     /**
      * @param ConvertibleValue $from
      * @param Unit $to
      * @return ConvertibleValue
      */
-    abstract public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue;
+    abstract public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue;
 
     /**
      * @param array $units

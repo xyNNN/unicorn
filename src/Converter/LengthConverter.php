@@ -96,7 +96,7 @@ class LengthConverter extends AbstractMathematicalConverter
     /**
      * @return string Name of the converter
      */
-    public function getName() : string
+    public function getName(): string
     {
         return 'unicorn.converter.length';
     }
@@ -106,10 +106,10 @@ class LengthConverter extends AbstractMathematicalConverter
      * @param Unit $to               Unit to which is to be converted
      * @return ConvertibleValue      Converted result
      */
-    public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue
+    public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
     {
         if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
-            throw new \InvalidArgumentException('The given Convertible is not valid for conversion.');
+            throw new \InvalidArgumentException('The given ConvertibleValue is not valid for conversion.');
         }
 
         $this->validate([$from->getUnit(), $to]);

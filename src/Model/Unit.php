@@ -42,7 +42,7 @@ class Unit
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -50,7 +50,7 @@ class Unit
     /**
      * @return string
      */
-    public function getAbbreviation() : string
+    public function getAbbreviation(): string
     {
         return $this->abbreviation;
     }
@@ -58,7 +58,7 @@ class Unit
     /**
      * @return float
      */
-    public function getFactor() : float
+    public function getFactor(): float
     {
         return $this->factor;
     }

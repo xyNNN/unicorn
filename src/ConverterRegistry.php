@@ -37,7 +37,7 @@ class ConverterRegistry
      *
      * @return ConverterInterface
      */
-    public function get(string $name) : ConverterInterface
+    public function get(string $name): ConverterInterface
     {
         if (!isset($this->converters[$name])) {
             throw new UnsupportedConverterException($name);

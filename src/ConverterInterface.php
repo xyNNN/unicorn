@@ -18,12 +18,12 @@ interface ConverterInterface
     /**
      * @return string
      */
-    public function getName() : string;
+    public function getName(): string;
 
     /**
      * @param ConvertibleValue $from
      * @param Unit $to
      * @return ConvertibleValue
      */
-    public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue;
+    public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue;
 }

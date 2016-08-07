@@ -32,7 +32,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The given Convertible is not valid for conversion.
+     * @expectedExceptionMessage The given ConvertibleValue is not valid for conversion.
      */
     public function testWrongValuePassed()
     {
@@ -80,7 +80,6 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             [$converter, new ConvertibleValue(1 / 5280, $converter::$mile), $converter::$feet, 1, 'feet', 'ft'],
             [$converter, new ConvertibleValue(1 / 1760, $converter::$mile), $converter::$yard, 1, 'yard', 'yd'],
             [$converter, new ConvertibleValue(1, $converter::$mile), $converter::$mile, 1, 'mile', 'm']
-
         ];
     }
 
