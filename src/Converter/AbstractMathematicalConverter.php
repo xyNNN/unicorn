@@ -92,7 +92,7 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      */
     public function root(ConvertibleValue $cv, int $nthRoot): ConvertibleValue
     {
-        $cv->setValue(pow($cv->getValue(), 1/$nthRoot));
+        $cv->setValue(pow($cv->getValue(), 1 / $nthRoot));
 
         return $cv;
     }
