@@ -87,10 +87,10 @@ class LengthConverter extends AbstractMathematicalConverter
         $this->units[] = self::$decimeter = new Unit('decimeter', 'dm', 10);
         $this->units[] = self::$meter = new Unit('meter', 'm', 1);
         $this->units[] = self::$kilometer = new Unit('kilometer', 'km', 0.001);
-        $this->units[] = self::$inch = new Unit('inch', 'in', 39.37007874);
-        $this->units[] = self::$feet = new Unit('feet', 'ft', 3.280839895);
-        $this->units[] = self::$yard = new Unit('yard', 'yd', 1.093613298);
-        $this->units[] = self::$mile = new Unit('mile', 'm', 0.0006213711922);
+        $this->units[] = self::$inch = new Unit('inch', 'in', 1 / 0.0254);
+        $this->units[] = self::$feet = new Unit('feet', 'ft', 1 / 0.3048);
+        $this->units[] = self::$yard = new Unit('yard', 'yd', 1 / 0.9144);
+        $this->units[] = self::$mile = new Unit('mile', 'm', 1 / 1609.344);
     }
 
     /**

@@ -65,6 +65,10 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             [$converter, new ConvertibleValue(0.1, $converter::$meter), $converter::$decimeter, 1, 'decimeter', 'dm'],
             [$converter, new ConvertibleValue(1, $converter::$meter), $converter::$meter, 1, 'meter', 'm'],
             [$converter, new ConvertibleValue(1000, $converter::$meter), $converter::$kilometer, 1, 'kilometer', 'km'],
+            [$converter, new ConvertibleValue(0.0254, $converter::$meter), $converter::$inch, 1, 'inch', 'in'],
+            [$converter, new ConvertibleValue(0.3048, $converter::$meter), $converter::$feet, 1, 'feet', 'ft'],
+            [$converter, new ConvertibleValue(0.9144, $converter::$meter), $converter::$yard, 1, 'yard', 'yd'],
+            [$converter, new ConvertibleValue(1609.344, $converter::$meter), $converter::$mile, 1, 'mile', 'm']
         ];
     }
 
