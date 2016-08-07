@@ -68,7 +68,19 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             [$converter, new ConvertibleValue(0.0254, $converter::$meter), $converter::$inch, 1, 'inch', 'in'],
             [$converter, new ConvertibleValue(0.3048, $converter::$meter), $converter::$feet, 1, 'feet', 'ft'],
             [$converter, new ConvertibleValue(0.9144, $converter::$meter), $converter::$yard, 1, 'yard', 'yd'],
-            [$converter, new ConvertibleValue(1609.344, $converter::$meter), $converter::$mile, 1, 'mile', 'm']
+            [$converter, new ConvertibleValue(1609.344, $converter::$meter), $converter::$mile, 1, 'mile', 'm'],
+            [$converter, new ConvertibleValue(1 / 1609344000000, $converter::$mile), $converter::$nanometer, 1, 'nanometer', 'nm'],
+            [$converter, new ConvertibleValue(1 / 1609344000, $converter::$mile), $converter::$micrometer, 1, 'micrometer', 'µm'],
+            [$converter, new ConvertibleValue(1 / 1609344, $converter::$mile), $converter::$millimeter, 1, 'millimeter', 'mm'],
+            [$converter, new ConvertibleValue(1 / 160934.4, $converter::$mile), $converter::$centimeter, 1, 'centimeter', 'cm'],
+            [$converter, new ConvertibleValue(1 / 16093.44, $converter::$mile), $converter::$decimeter, 1, 'decimeter', 'dm'],
+            [$converter, new ConvertibleValue(1 / 1609.344, $converter::$mile), $converter::$meter, 1, 'meter', 'm'],
+            [$converter, new ConvertibleValue(1 / 1.609344, $converter::$mile), $converter::$kilometer, 1, 'kilometer', 'km'],
+            [$converter, new ConvertibleValue(1 / 63360, $converter::$mile), $converter::$inch, 1, 'inch', 'in'],
+            [$converter, new ConvertibleValue(1 / 5280, $converter::$mile), $converter::$feet, 1, 'feet', 'ft'],
+            [$converter, new ConvertibleValue(1 / 1760, $converter::$mile), $converter::$yard, 1, 'yard', 'yd'],
+            [$converter, new ConvertibleValue(1, $converter::$mile), $converter::$mile, 1, 'mile', 'm']
+
         ];
     }
 
