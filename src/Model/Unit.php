@@ -30,7 +30,7 @@ class Unit
      * Unit constructor.
      * @param string $name         Name of the unit
      * @param string $abbreviation Mathematical abbreviation of the unit
-     * @param float $factor Factor for normalization
+     * @param float $factor        Factor for normalization
      */
     public function __construct(string $name, string $abbreviation, float $factor)
     {
