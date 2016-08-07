@@ -13,7 +13,7 @@ namespace Xynnn\Unicorn\Converter;
 use Xynnn\Unicorn\Model\Unit;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 
-class LengthConverter extends AbstractConverter
+class LengthConverter extends AbstractMathematicalConverter
 {
 
     /**

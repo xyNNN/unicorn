@@ -27,46 +27,4 @@ interface ConverterInterface
      */
     public function convert(ConvertibleValue $from, Unit $to) : ConvertibleValue;
 
-    /**
-     * @param ConvertibleValue $cv2
-     * @param ConvertibleValue $cv1
-     * @return ConvertibleValue
-     */
-    public function add(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
-
-    /**
-     * @param ConvertibleValue $cv1
-     * @param ConvertibleValue $cv2
-     * @return ConvertibleValue
-     */
-    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
-
-    /**
-     * @param ConvertibleValue $cv1
-     * @param ConvertibleValue $cv2
-     * @return ConvertibleValue
-     */
-    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
-
-    /**
-     * @param ConvertibleValue $cv1
-     * @param ConvertibleValue $cv2
-     * @return ConvertibleValue
-     */
-    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2) : ConvertibleValue;
-
-    /**
-     * @param ConvertibleValue $cv
-     * @param int $power
-     * @return ConvertibleValue
-     */
-    public function exponentiate(ConvertibleValue $cv, int $power) : ConvertibleValue;
-
-    /**
-     * @param ConvertibleValue $cv
-     * @param int $nthRoot
-     * @return ConvertibleValue
-     */
-    public function root(ConvertibleValue $cv, int $nthRoot) : ConvertibleValue;
-
 }
