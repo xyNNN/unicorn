@@ -78,15 +78,15 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
         $result = $converter->convert(
             $converter->add(
-                new ConvertibleValue(10000, $converter::$nanometer),
-                new ConvertibleValue(10, $converter::$micrometer)
+                new ConvertibleValue(1, $converter::$kilometer),
+                new ConvertibleValue(10000, $converter::$centimeter)
             ),
-            $converter::$micrometer
+            $converter::$meter
         );
 
-        $this->assertEquals(20, $result->getValue());
-        $this->assertEquals($converter::$micrometer, $result->getUnit());
-        $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
+        $this->assertEquals(1100, $result->getValue());
+        $this->assertEquals($converter::$meter, $result->getUnit());
+        $this->assertEquals('m', $result->getUnit()->getAbbreviation());
     }
 
     public function testConversionWithNestedAddition()
