@@ -50,14 +50,40 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), new Unit('micrometer', 'µm', 1000000));
     }
 
-    public function testConversion()
+    /**
+     * @return array
+     */
+    public function dataProvider()
     {
         $converter = $this->getConverter();
-        $result = $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), $converter::$micrometer);
 
-        $this->assertEquals(10, $result->getValue());
-        $this->assertEquals($converter::$micrometer, $result->getUnit());
-        $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
+        return [
+            [$converter, new ConvertibleValue(0.000000001, $converter::$meter), $converter::$nanometer, 1, 'nanometer', 'nm'],
+            [$converter, new ConvertibleValue(0.000001, $converter::$meter), $converter::$micrometer, 1, 'micrometer', 'µm'],
+            [$converter, new ConvertibleValue(0.001, $converter::$meter), $converter::$millimeter, 1, 'millimeter', 'mm'],
+            [$converter, new ConvertibleValue(0.01, $converter::$meter), $converter::$centimeter, 1, 'centimeter', 'cm'],
+            [$converter, new ConvertibleValue(0.1, $converter::$meter), $converter::$decimeter, 1, 'decimeter', 'dm'],
+            [$converter, new ConvertibleValue(1, $converter::$meter), $converter::$meter, 1, 'meter', 'm'],
+            [$converter, new ConvertibleValue(1000, $converter::$meter), $converter::$kilometer, 1, 'kilometer', 'km'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider
+     * @param LengthConverter $converter
+     * @param ConvertibleValue $from
+     * @param Unit $to
+     * @param float $expectedValue
+     * @param string $expectedUnitName
+     * @param string $expectedUnitAbbreviation
+     */
+    public function testConversion(LengthConverter $converter, ConvertibleValue $from, Unit $to, float $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
+    {
+        $result = $converter->convert($from, $to);
+
+        $this->assertEquals($expectedValue, $result->getValue());
+        $this->assertEquals($expectedUnitName, $result->getUnit()->getName());
+        $this->assertEquals($expectedUnitAbbreviation, $result->getUnit()->getAbbreviation());
     }
 
     public function testNestedConversion()
