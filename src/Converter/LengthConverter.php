@@ -41,9 +41,9 @@ class LengthConverter extends AbstractMathematicalConverter
      */
     public function __construct()
     {
-        array_push($this->units, self::$nanometer = new Unit('nanometer', 'nm', 1000000000));
-        array_push($this->units, self::$micrometer = new Unit('micrometer', 'µm', 1000000));
-        array_push($this->units, self::$meter = new Unit('meter', 'm', 1));
+        $this->units[] = self::$nanometer = new Unit('nanometer', 'nm', 1000000000);
+        $this->units[] = self::$micrometer = new Unit('micrometer', 'µm', 1000000);
+        $this->units[] = self::$meter = new Unit('meter', 'm', 1);
     }
 
     /**
