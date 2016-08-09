@@ -10,10 +10,7 @@
 
 namespace Xynnn\Unicorn\Converter;
 
-use Xynnn\Unicorn\ConverterInterface;
-use Xynnn\Unicorn\Exception\UnsupportedUnitException;
 use Xynnn\Unicorn\Model\ConvertibleValue;
-use Xynnn\Unicorn\Model\Unit;
 
 abstract class AbstractMathematicalConverter extends AbstractConverter
 {
@@ -24,11 +21,13 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      */
     public function add(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
+        $givenUnit = $cv1->getUnit();
         $this->normalize($cv1);
         $this->normalize($cv2);
         $cv1->setValue($cv1->getValue() + $cv2->getValue());
+        $result = $this->convert($cv1, $givenUnit);
 
-        return $cv1;
+        return $result;
     }
 
     /**
@@ -38,37 +37,35 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      */
     public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
+        $givenUnit = $cv1->getUnit();
         $this->normalize($cv1);
         $this->normalize($cv2);
         $cv1->setValue($cv1->getValue() - $cv2->getValue());
+        $result = $this->convert($cv1, $givenUnit);
+
+        return $result;
+    }
+
+    /**
+     * @param ConvertibleValue $cv1
+     * @param int $multiplyBy
+     * @return ConvertibleValue
+     */
+    public function multiply(ConvertibleValue $cv1, int $multiplyBy): ConvertibleValue
+    {
+        $cv1->setValue($cv1->getValue() * $multiplyBy);
 
         return $cv1;
     }
 
     /**
      * @param ConvertibleValue $cv1
-     * @param ConvertibleValue $cv2
+     * @param int $divideBy
      * @return ConvertibleValue
      */
-    public function multiply(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
+    public function divide(ConvertibleValue $cv1, int $divideBy): ConvertibleValue
     {
-        $this->normalize($cv1);
-        $this->normalize($cv2);
-        $cv1->setValue($cv1->getValue() * $cv2->getValue());
-
-        return $cv1;
-    }
-
-    /**
-     * @param ConvertibleValue $cv1
-     * @param ConvertibleValue $cv2
-     * @return ConvertibleValue
-     */
-    public function divide(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
-    {
-        $this->normalize($cv1);
-        $this->normalize($cv2);
-        $cv1->setValue($cv1->getValue() / $cv2->getValue());
+        $cv1->setValue($cv1->getValue() / $divideBy);
 
         return $cv1;
     }

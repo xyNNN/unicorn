@@ -120,12 +120,12 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert(
             $converter->add(
                 new ConvertibleValue(1, $converter::$kilometer),
-                new ConvertibleValue(10000, $converter::$centimeter)
+                new ConvertibleValue(1000, $converter::$meter)
             ),
             $converter::$meter
         );
 
-        $this->assertEquals(1100, $result->getValue());
+        $this->assertEquals(2000, $result->getValue());
         $this->assertEquals($converter::$meter, $result->getUnit());
         $this->assertEquals('m', $result->getUnit()->getAbbreviation());
     }
@@ -189,13 +189,13 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
         $result = $converter->convert(
             $converter->multiply(
-                new ConvertibleValue(1, $converter::$meter),
-                new ConvertibleValue(2, $converter::$meter)
+                new ConvertibleValue(2, $converter::$meter),
+                2
             ),
             $converter::$meter
         );
 
-        $this->assertEquals(2, $result->getValue());
+        $this->assertEquals(4, $result->getValue());
         $this->assertEquals($converter::$meter, $result->getUnit());
         $this->assertEquals('m', $result->getUnit()->getAbbreviation());
     }
@@ -207,9 +207,9 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             $converter->multiply(
                 $converter->multiply(
                     new ConvertibleValue(50, $converter::$meter),
-                    new ConvertibleValue(10, $converter::$meter)
+                    10
                 ),
-                new ConvertibleValue(10, $converter::$meter)
+                10
             ),
             $converter::$meter
         );
@@ -225,7 +225,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $result = $converter->convert(
             $converter->divide(
                 new ConvertibleValue(50, $converter::$meter),
-                new ConvertibleValue(5, $converter::$meter)
+                5
             ),
             $converter::$meter
         );
@@ -242,9 +242,9 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
             $converter->divide(
                 $converter->divide(
                     new ConvertibleValue(1000, $converter::$meter),
-                    new ConvertibleValue(10, $converter::$meter)
+                    10
                 ),
-                new ConvertibleValue(10, $converter::$meter)
+                10
             ),
             $converter::$meter
         );
@@ -322,6 +322,62 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $result->getValue());
         $this->assertEquals($converter::$meter, $result->getUnit());
         $this->assertEquals('m', $result->getUnit()->getAbbreviation());
+    }
+
+    public function testAdditionMustNotChangeUnit()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->add(
+            new ConvertibleValue(2, $converter::$kilometer),
+            new ConvertibleValue(1000, $converter::$meter)
+        );
+
+        $this->assertEquals(3, $result->getValue());
+        $this->assertEquals($converter::$kilometer, $result->getUnit());
+        $this->assertEquals('km', $result->getUnit()->getAbbreviation());
+        $this->assertEquals('kilometer', $result->getUnit()->getName());
+    }
+
+    public function testSubstractionMustNotChangeUnit()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->substract(
+            new ConvertibleValue(2, $converter::$kilometer),
+            new ConvertibleValue(1000, $converter::$meter)
+        );
+
+        $this->assertEquals(1, $result->getValue());
+        $this->assertEquals($converter::$kilometer, $result->getUnit());
+        $this->assertEquals('km', $result->getUnit()->getAbbreviation());
+        $this->assertEquals('kilometer', $result->getUnit()->getName());
+    }
+
+    public function testMultiplicationMustNotChangeUnit()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->multiply(
+            new ConvertibleValue(2, $converter::$kilometer),
+            2
+        );
+
+        $this->assertEquals(4, $result->getValue());
+        $this->assertEquals($converter::$kilometer, $result->getUnit());
+        $this->assertEquals('km', $result->getUnit()->getAbbreviation());
+        $this->assertEquals('kilometer', $result->getUnit()->getName());
+    }
+
+    public function testDivisionMustNotChangeUnit()
+    {
+        $converter = $this->getConverter();
+        $result = $converter->divide(
+            new ConvertibleValue(6, $converter::$kilometer),
+            2
+        );
+
+        $this->assertEquals(3, $result->getValue());
+        $this->assertEquals($converter::$kilometer, $result->getUnit());
+        $this->assertEquals('km', $result->getUnit()->getAbbreviation());
+        $this->assertEquals('kilometer', $result->getUnit()->getName());
     }
 
     /**
