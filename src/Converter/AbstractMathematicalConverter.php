@@ -11,6 +11,7 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\Model\ConvertibleValue;
+use Xynnn\Unicorn\Model\Unit;
 
 abstract class AbstractMathematicalConverter extends AbstractConverter
 {
@@ -21,13 +22,10 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      */
     public function add(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
-        $givenUnit = $cv1->getUnit();
-        $this->normalize($cv1);
-        $this->normalize($cv2);
+        $givenUnit = $this->getCurrentUnitAndNormalize($cv1, $cv2);
         $cv1->setValue($cv1->getValue() + $cv2->getValue());
-        $result = $this->convert($cv1, $givenUnit);
 
-        return $result;
+        return $this->convert($cv1, $givenUnit);
     }
 
     /**
@@ -37,13 +35,24 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      */
     public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
+        $givenUnit = $this->getCurrentUnitAndNormalize($cv1, $cv2);
+        $cv1->setValue($cv1->getValue() - $cv2->getValue());
+
+        return $this->convert($cv1, $givenUnit);
+    }
+
+    /**
+     * @param ConvertibleValue $cv1
+     * @param ConvertibleValue $cv2
+     * @return Unit
+     */
+    private function getCurrentUnitAndNormalize(ConvertibleValue $cv1, ConvertibleValue $cv2)
+    {
         $givenUnit = $cv1->getUnit();
         $this->normalize($cv1);
         $this->normalize($cv2);
-        $cv1->setValue($cv1->getValue() - $cv2->getValue());
-        $result = $this->convert($cv1, $givenUnit);
 
-        return $result;
+        return $givenUnit;
     }
 
 }
