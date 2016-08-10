@@ -149,11 +149,11 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
     }
 
-    public function testConversionWithSubstraction()
+    public function testConversionWithSubtraction()
     {
         $converter = $this->getConverter();
         $result = $converter->convert(
-            $converter->substract(
+            $converter->subtract(
                 new ConvertibleValue(20000, $converter::$nanometer),
                 new ConvertibleValue(10, $converter::$micrometer)
             ),
@@ -165,12 +165,12 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('µm', $result->getUnit()->getAbbreviation());
     }
 
-    public function testConversionWithNestedSubstraction()
+    public function testConversionWithNestedSubtraction()
     {
         $converter = $this->getConverter();
         $result = $converter->convert(
-            $converter->substract(
-                $converter->substract(
+            $converter->subtract(
+                $converter->subtract(
                     new ConvertibleValue(100000, $converter::$nanometer),
                     new ConvertibleValue(10, $converter::$micrometer)
                 ),
@@ -198,10 +198,10 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('kilometer', $result->getUnit()->getName());
     }
 
-    public function testSubstractionMustNotChangeUnit()
+    public function testSubtractionMustNotChangeUnit()
     {
         $converter = $this->getConverter();
-        $result = $converter->substract(
+        $result = $converter->subtract(
             new ConvertibleValue(2, $converter::$kilometer),
             new ConvertibleValue(1000, $converter::$meter)
         );

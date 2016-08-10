@@ -33,7 +33,7 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function substract(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
+    public function subtract(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
         $givenUnit = $this->getCurrentUnitAndNormalize($cv1, $cv2);
         $cv1->setValue($cv1->getValue() - $cv2->getValue());
