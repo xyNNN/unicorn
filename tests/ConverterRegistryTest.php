@@ -10,6 +10,7 @@
 
 namespace Xynnn\Unicorn\Tests\Converter;
 
+use Xynnn\Unicorn\Converter\CurrencyConverter;
 use Xynnn\Unicorn\Converter\LengthConverter;
 use Xynnn\Unicorn\ConverterRegistry;
 
@@ -27,6 +28,7 @@ class ConverterRegistryTest extends \PHPUnit_Framework_TestCase
         $registry = $this->getRegistry();
 
         $this->assertEquals(LengthConverter::class, get_class($registry->get('unicorn.converter.length')));
+        $this->assertEquals(CurrencyConverter::class, get_class($registry->get('unicorn.converter.currency')));
     }
 
     /**
@@ -45,7 +47,7 @@ class ConverterRegistryTest extends \PHPUnit_Framework_TestCase
      */
     private function getRegistry() : ConverterRegistry
     {
-        $registry = new ConverterRegistry([new LengthConverter()]);
+        $registry = new ConverterRegistry([new LengthConverter(), new CurrencyConverter()]);
 
         return $registry;
     }
