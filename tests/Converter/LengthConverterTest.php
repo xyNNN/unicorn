@@ -20,7 +20,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
     {
         $converter = $this->getConverter();
 
-        $this->assertEquals(LengthConverter::class, get_class($converter));
+        $this->assertInstanceOf(LengthConverter::class, $converter);
     }
 
     public function testGetName()
