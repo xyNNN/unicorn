@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "20216e047e6778a5aa9edf621c0296d7",
-    "content-hash": "e7a47909053e78c713e2baf737dde2ea",
+    "hash": "07f4179b2548a3c5df1953431bb89945",
+    "content-hash": "c49ef7ce794bdf6148c9c3df46432ba5",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -230,16 +230,16 @@
         },
         {
             "name": "steffenbrand/curr-curr",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/steffenbrand/curr-curr.git",
-                "reference": "a60a269fd7258ffc16c12a1580a5268726d4fea2"
+                "reference": "7c4a668931e9625533bc00a7386a0bb44625e9c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/steffenbrand/curr-curr/zipball/a60a269fd7258ffc16c12a1580a5268726d4fea2",
-                "reference": "a60a269fd7258ffc16c12a1580a5268726d4fea2",
+                "url": "https://api.github.com/repos/steffenbrand/curr-curr/zipball/7c4a668931e9625533bc00a7386a0bb44625e9c4",
+                "reference": "7c4a668931e9625533bc00a7386a0bb44625e9c4",
                 "shasum": ""
             },
             "require": {
@@ -268,12 +268,47 @@
             "description": "Delivers current exchange rates for EUR provided by the ECB under https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml as PHP objects.",
             "homepage": "https://github.com/steffenbrand/curr-curr",
             "keywords": [
+                "AUD",
+                "BGN",
+                "BRL",
+                "CHF",
+                "CNY",
+                "CZK",
+                "DKK",
                 "ECB",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HRK",
+                "HUF",
+                "IDR",
+                "ILS",
+                "INR",
+                "JPY",
+                "KRW",
+                "MXN",
+                "MYR",
+                "NOK",
+                "NZD",
+                "PLN",
+                "RUB",
+                "SEK",
+                "SGD",
+                "THB",
+                "USD",
+                "ZAR",
+                "cad",
                 "currency",
+                "dollar",
+                "euro",
                 "exchange rates",
-                "ezb"
+                "ezb",
+                "money",
+                "php",
+                "ron",
+                "try"
             ],
-            "time": "2016-09-18 12:23:21"
+            "time": "2016-09-20 18:49:14"
         }
     ],
     "packages-dev": [
