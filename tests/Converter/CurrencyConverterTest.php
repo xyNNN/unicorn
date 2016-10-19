@@ -10,7 +10,6 @@
 namespace Xynnn\Unicorn\Tests\Converter;
 
 use SteffenBrand\CurrCurr\Client\EcbClientMock;
-use SteffenBrand\CurrCurr\CurrCurr;
 use SteffenBrand\CurrCurr\Model\Currency;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
@@ -59,12 +58,9 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
     {
         $converter = $this->getConverter();
 
-        $cc = new CurrCurr(new EcbClientMock('ValidResponse'));
-        $exchangeRates = $cc->getExchangeRates();
-
         return [
-            [$converter, new ConvertibleValue(10, $converter::$eur), $converter::$usd, (10*$exchangeRates[Currency::USD]->getRate()), Currency::USD, '$'],
-            [$converter, new ConvertibleValue((10*$exchangeRates[Currency::USD]->getRate()), $converter::$usd), $converter::$eur, 10, 'EUR', '€']
+            [$converter, new ConvertibleValue(10, $converter::$eur), $converter::$usd, (10*$converter::$usd->getFactor()), Currency::USD, '$'],
+            [$converter, new ConvertibleValue((10*$converter::$usd->getFactor()), $converter::$usd), $converter::$eur, 10, 'EUR', '€']
         ];
     }
 
