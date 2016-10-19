@@ -59,7 +59,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
     {
         $converter = $this->getConverter();
 
-        $cc = new CurrCurr();
+        $cc = new CurrCurr(new EcbClientMock('ValidResponse'));
         $exchangeRates = $cc->getExchangeRates();
 
         return [
