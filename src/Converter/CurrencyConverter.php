@@ -185,16 +185,12 @@ class CurrencyConverter extends AbstractMathematicalConverter
 
     /**
      * CurrencyConverter constructor.
+     * @param EcbClientInterface $ecbClient leave blank for default ECB client
      */
     public function __construct(EcbClientInterface $ecbClient = null)
     {
 
-        if (null === $ecbClient) {
-            $cc = new CurrCurr();
-        } else {
-            $cc = new CurrCurr($ecbClient);
-        }
-
+        $cc = new CurrCurr($ecbClient);
         $exchangeRates = $cc->getExchangeRates();
 
         $this->units[] = self::$eur = new Unit('EUR', '€', 1);

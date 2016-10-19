@@ -59,7 +59,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
         $converter = $this->getConverter();
 
         return [
-            [$converter, new ConvertibleValue(10, $converter::$eur), $converter::$usd, (10*$converter::$usd->getFactor()), Currency::USD, '$'],
+            [$converter, new ConvertibleValue(10, $converter::$eur), $converter::$usd, (10*$converter::$usd->getFactor()), Currency::USD, $converter::$usd->getAbbreviation()],
             [$converter, new ConvertibleValue((10*$converter::$usd->getFactor()), $converter::$usd), $converter::$eur, 10, 'EUR', '€']
         ];
     }
