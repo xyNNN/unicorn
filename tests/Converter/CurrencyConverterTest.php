@@ -82,6 +82,32 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedUnitAbbreviation, $result->getUnit()->getAbbreviation());
     }
 
+    public function testNoRoundingErrorDuringAdditionAndSubtractionAndConversion()
+    {
+        $converter = $this->getConverter();
+
+        // sum up two different units
+        $addition = $converter->add(
+            new ConvertibleValue(10.45, $converter::$eur),
+            new ConvertibleValue(100.77, $converter::$usd)
+        );
+
+        // convert them to jpy
+        $jpy = $converter->convert($addition, $converter::$jpy);
+
+        // subtract eur from jpy
+        $subtraction = $converter->subtract(
+            $jpy,
+            new ConvertibleValue(10.45, $converter::$eur)
+        );
+
+        // convert back to usd
+        $usd = $converter->convert($subtraction, $converter::$usd);
+
+        // make sure no rounding error occured
+        $this->assertEquals(100.77, $usd->getValue(), 'rounding error occured');
+    }
+
     /**
      * @return CurrencyConverter
      */
