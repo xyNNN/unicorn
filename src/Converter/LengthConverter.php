@@ -124,48 +124,7 @@ class LengthConverter extends AbstractMathematicalConverter
      */
     protected function normalize(ConvertibleValue $cv)
     {
-        switch ($cv->getUnit()) {
-            case self::$nanometer:
-                $cv->setValue($cv->getValue() / self::$nanometer->getFactor());
-                break;
-
-            case self::$micrometer:
-                $cv->setValue($cv->getValue() / self::$micrometer->getFactor());
-                break;
-
-            case self::$millimeter:
-                $cv->setValue($cv->getValue() / self::$millimeter->getFactor());
-                break;
-
-            case self::$centimeter:
-                $cv->setValue($cv->getValue() / self::$centimeter->getFactor());
-                break;
-
-            case self::$decimeter:
-                $cv->setValue($cv->getValue() / self::$decimeter->getFactor());
-                break;
-
-            case self::$kilometer:
-                $cv->setValue($cv->getValue() / self::$kilometer->getFactor());
-                break;
-
-            case self::$inch:
-                $cv->setValue($cv->getValue() / self::$inch->getFactor());
-                break;
-
-            case self::$feet:
-                $cv->setValue($cv->getValue() / self::$feet->getFactor());
-                break;
-
-            case self::$yard:
-                $cv->setValue($cv->getValue() / self::$yard->getFactor());
-                break;
-
-            case self::$mile:
-                $cv->setValue($cv->getValue() / self::$mile->getFactor());
-                break;
-        }
-
+        $cv->setValue($cv->getValue() / $cv->getUnit()->getFactor());
         $cv->setUnit(self::$meter);
     }
 
