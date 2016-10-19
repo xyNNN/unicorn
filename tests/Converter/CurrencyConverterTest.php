@@ -7,9 +7,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Xynnn\Unicorn\Tests\Converter;
 
+use SteffenBrand\CurrCurr\Client\EcbClientMock;
 use SteffenBrand\CurrCurr\CurrCurr;
 use SteffenBrand\CurrCurr\Model\Currency;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
@@ -91,6 +91,6 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
      */
     private function getConverter() : CurrencyConverter
     {
-        return new CurrencyConverter();
+        return new CurrencyConverter(new EcbClientMock('ValidResponse'));
     }
 }
