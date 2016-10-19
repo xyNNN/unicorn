@@ -87,6 +87,6 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
      */
     private function getConverter() : CurrencyConverter
     {
-        return new CurrencyConverter(new EcbClientMock('ValidResponse'));
+        return new CurrencyConverter(new EcbClientMock(EcbClientMock::VALID_RESPONSE));
     }
 }
