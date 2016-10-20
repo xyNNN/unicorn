@@ -15,6 +15,17 @@ use Xynnn\Unicorn\Model\Unit;
 
 abstract class AbstractMathematicalConverter extends AbstractConverter
 {
+
+    /**
+     * @param ConvertibleValue $from The convertible to be converted
+     * @param Unit $to               Unit to which is to be converted
+     */
+    protected function convertTo(ConvertibleValue $from, Unit $to)
+    {
+        $from->setValue($from->getValue() * $to->getFactor());
+        $from->setUnit($to);
+    }
+
     /**
      * @param ConvertibleValue $cv1
      * @param ConvertibleValue $cv2

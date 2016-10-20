@@ -40,7 +40,7 @@ abstract class AbstractConverter implements ConverterInterface
     protected function validate(array $units)
     {
         foreach ($units as $unit) {
-            // make sure the unit is not just an instance of Unit, but the real same instance from the LengthConverter
+            // make sure the unit is not just an instance of Unit, but the real same instance from the Converter
             if (!in_array($unit, $this->units, true)) {
                 throw new UnsupportedUnitException($unit);
             }
