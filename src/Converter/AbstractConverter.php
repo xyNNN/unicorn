@@ -32,7 +32,18 @@ abstract class AbstractConverter implements ConverterInterface
      * @param Unit $to
      * @return ConvertibleValue
      */
-    abstract public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue;
+    public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
+    {
+        if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
+            throw new \InvalidArgumentException('The given ConvertibleValue is not valid for conversion.');
+        }
+
+        $this->validate([$from->getUnit(), $to]);
+        $this->normalize($from);
+        $this->convertTo($from, $to);
+
+        return $from;
+    }
 
     /**
      * @param array $units

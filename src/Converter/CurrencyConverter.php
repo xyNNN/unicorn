@@ -237,24 +237,6 @@ class CurrencyConverter extends AbstractMathematicalConverter
     }
 
     /**
-     * @param ConvertibleValue $from ConvertibleValue to be converted
-     * @param Unit $to               Unit to which is to be converted
-     * @return ConvertibleValue      Converted result
-     */
-    public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
-    {
-        if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
-            throw new \InvalidArgumentException('The given ConvertibleValue is not valid for conversion.');
-        }
-
-        $this->validate([$from->getUnit(), $to]);
-        $this->normalize($from);
-        $this->convertTo($from, $to);
-
-        return $from;
-    }
-
-    /**
      * @param ConvertibleValue $cv The Convertible to be normalized
      */
     protected function normalize(ConvertibleValue $cv)
