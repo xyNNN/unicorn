@@ -259,7 +259,7 @@ class CurrencyConverter extends AbstractMathematicalConverter
      */
     protected function normalize(ConvertibleValue $cv)
     {
-        $cv->setValue($cv->getValue() / $cv->getUnit()->getFactor());
+        parent::normalize($cv);
         $cv->setUnit(self::$eur);
     }
 

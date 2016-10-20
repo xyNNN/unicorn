@@ -50,7 +50,10 @@ abstract class AbstractConverter implements ConverterInterface
     /**
      * @param ConvertibleValue $cv
      */
-    abstract protected function normalize(ConvertibleValue $cv);
+    protected function normalize(ConvertibleValue $cv)
+    {
+        $cv->setValue($cv->getValue() / $cv->getUnit()->getFactor());
+    }
 
     /**
      * @param ConvertibleValue $from
