@@ -85,6 +85,13 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testNoRoundingErrorDuringAdditionAndSubtractionAndConversion()
     {
+        /**
+         * todo: actually implement money pattern
+         * if you try values like:
+         * 10.45444444444444444444444444444444444
+         * 10.45444444444444444444444444444444449
+         * this test is still not failing, as php kills the last decimals
+         */
         $converter = $this->getConverter();
 
         // sum up two different units
