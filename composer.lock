@@ -230,16 +230,16 @@
         },
         {
             "name": "steffenbrand/curr-curr",
-            "version": "2.1.3",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/steffenbrand/curr-curr.git",
-                "reference": "34efdbdfb8f36595f5fa41432e2f5367cf0fda78"
+                "reference": "e715136df95d7689312bc0e3151fdf08c830c178"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/steffenbrand/curr-curr/zipball/34efdbdfb8f36595f5fa41432e2f5367cf0fda78",
-                "reference": "34efdbdfb8f36595f5fa41432e2f5367cf0fda78",
+                "url": "https://api.github.com/repos/steffenbrand/curr-curr/zipball/e715136df95d7689312bc0e3151fdf08c830c178",
+                "reference": "e715136df95d7689312bc0e3151fdf08c830c178",
                 "shasum": ""
             },
             "require": {
@@ -308,7 +308,7 @@
                 "ron",
                 "try"
             ],
-            "time": "2016-10-19 11:47:53"
+            "time": "2016-10-21 08:37:54"
         }
     ],
     "packages-dev": [

@@ -43,7 +43,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Xynnn\Unicorn\Exception\UnsupportedUnitException
-     * @expectedExceptionMessage The conversion of "eur" is not possible. Make sure to use the static units from the converter instance.
+     * @expectedExceptionMessage The conversion of "eur" is not possible. Make sure to add it to the converters units array first.
      */
     public function testWrongTypePassed()
     {
