@@ -267,37 +267,99 @@ class CurrencyConverter extends AbstractMathematicalConverter
         try {
             $exchangeRates = $this->exchangeRatesClient->getExchangeRates();
 
-            self::$usd->setFactor($exchangeRates[self::$usd->getName()]->getRate());
-            self::$jpy->setFactor($exchangeRates[self::$jpy->getName()]->getRate());
-            self::$bgn->setFactor($exchangeRates[self::$bgn->getName()]->getRate());
-            self::$czk->setFactor($exchangeRates[self::$czk->getName()]->getRate());
-            self::$dkk->setFactor($exchangeRates[self::$dkk->getName()]->getRate());
-            self::$gbp->setFactor($exchangeRates[self::$gbp->getName()]->getRate());
-            self::$huf->setFactor($exchangeRates[self::$huf->getName()]->getRate());
-            self::$pln->setFactor($exchangeRates[self::$pln->getName()]->getRate());
-            self::$ron->setFactor($exchangeRates[self::$ron->getName()]->getRate());
-            self::$sek->setFactor($exchangeRates[self::$sek->getName()]->getRate());
-            self::$chf->setFactor($exchangeRates[self::$chf->getName()]->getRate());
-            self::$nok->setFactor($exchangeRates[self::$nok->getName()]->getRate());
-            self::$hrk->setFactor($exchangeRates[self::$hrk->getName()]->getRate());
-            self::$rub->setFactor($exchangeRates[self::$rub->getName()]->getRate());
-            self::$try->setFactor($exchangeRates[self::$try->getName()]->getRate());
-            self::$aud->setFactor($exchangeRates[self::$aud->getName()]->getRate());
-            self::$brl->setFactor($exchangeRates[self::$brl->getName()]->getRate());
-            self::$cad->setFactor($exchangeRates[self::$cad->getName()]->getRate());
-            self::$cny->setFactor($exchangeRates[self::$cny->getName()]->getRate());
-            self::$hkd->setFactor($exchangeRates[self::$hkd->getName()]->getRate());
-            self::$idr->setFactor($exchangeRates[self::$idr->getName()]->getRate());
-            self::$ils->setFactor($exchangeRates[self::$ils->getName()]->getRate());
-            self::$inr->setFactor($exchangeRates[self::$inr->getName()]->getRate());
-            self::$krw->setFactor($exchangeRates[self::$krw->getName()]->getRate());
-            self::$mxn->setFactor($exchangeRates[self::$mxn->getName()]->getRate());
-            self::$myr->setFactor($exchangeRates[self::$myr->getName()]->getRate());
-            self::$nzd->setFactor($exchangeRates[self::$nzd->getName()]->getRate());
-            self::$php->setFactor($exchangeRates[self::$php->getName()]->getRate());
-            self::$sgd->setFactor($exchangeRates[self::$sgd->getName()]->getRate());
-            self::$thb->setFactor($exchangeRates[self::$thb->getName()]->getRate());
-            self::$zar->setFactor($exchangeRates[self::$zar->getName()]->getRate());
+            if (null === self::$usd->getFactor()) {
+                self::$usd->setFactor($exchangeRates[self::$usd->getName()]->getRate());
+            }
+            if (null === self::$jpy->getFactor()) {
+                self::$jpy->setFactor($exchangeRates[self::$jpy->getName()]->getRate());
+            }
+            if (null === self::$bgn->getFactor()) {
+                self::$bgn->setFactor($exchangeRates[self::$bgn->getName()]->getRate());
+            }
+            if (null === self::$czk->getFactor()) {
+                self::$czk->setFactor($exchangeRates[self::$czk->getName()]->getRate());
+            }
+            if (null === self::$dkk->getFactor()) {
+                self::$dkk->setFactor($exchangeRates[self::$dkk->getName()]->getRate());
+            }
+            if (null === self::$gbp->getFactor()) {
+                self::$gbp->setFactor($exchangeRates[self::$gbp->getName()]->getRate());
+            }
+            if (null === self::$huf->getFactor()) {
+                self::$huf->setFactor($exchangeRates[self::$huf->getName()]->getRate());
+            }
+            if (null === self::$pln->getFactor()) {
+                self::$pln->setFactor($exchangeRates[self::$pln->getName()]->getRate());
+            }
+            if (null === self::$ron->getFactor()) {
+                self::$ron->setFactor($exchangeRates[self::$ron->getName()]->getRate());
+            }
+            if (null === self::$sek->getFactor()) {
+                self::$sek->setFactor($exchangeRates[self::$sek->getName()]->getRate());
+            }
+            if (null === self::$chf->getFactor()) {
+                self::$chf->setFactor($exchangeRates[self::$chf->getName()]->getRate());
+            }
+            if (null === self::$nok->getFactor()) {
+                self::$nok->setFactor($exchangeRates[self::$nok->getName()]->getRate());
+            }
+            if (null === self::$hrk->getFactor()) {
+                self::$hrk->setFactor($exchangeRates[self::$hrk->getName()]->getRate());
+            }
+            if (null === self::$rub->getFactor()) {
+                self::$rub->setFactor($exchangeRates[self::$rub->getName()]->getRate());
+            }
+            if (null === self::$try->getFactor()) {
+                self::$try->setFactor($exchangeRates[self::$try->getName()]->getRate());
+            }
+            if (null === self::$aud->getFactor()) {
+                self::$aud->setFactor($exchangeRates[self::$aud->getName()]->getRate());
+            }
+            if (null === self::$brl->getFactor()) {
+                self::$brl->setFactor($exchangeRates[self::$brl->getName()]->getRate());
+            }
+            if (null === self::$cad->getFactor()) {
+                self::$cad->setFactor($exchangeRates[self::$cad->getName()]->getRate());
+            }
+            if (null === self::$cny->getFactor()) {
+                self::$cny->setFactor($exchangeRates[self::$cny->getName()]->getRate());
+            }
+            if (null === self::$hkd->getFactor()) {
+                self::$hkd->setFactor($exchangeRates[self::$hkd->getName()]->getRate());
+            }
+            if (null === self::$idr->getFactor()) {
+                self::$idr->setFactor($exchangeRates[self::$idr->getName()]->getRate());
+            }
+            if (null === self::$ils->getFactor()) {
+                self::$ils->setFactor($exchangeRates[self::$ils->getName()]->getRate());
+            }
+            if (null === self::$inr->getFactor()) {
+                self::$inr->setFactor($exchangeRates[self::$inr->getName()]->getRate());
+            }
+            if (null === self::$krw->getFactor()) {
+                self::$krw->setFactor($exchangeRates[self::$krw->getName()]->getRate());
+            }
+            if (null === self::$mxn->getFactor()) {
+                self::$mxn->setFactor($exchangeRates[self::$mxn->getName()]->getRate());
+            }
+            if (null === self::$myr->getFactor()) {
+                self::$myr->setFactor($exchangeRates[self::$myr->getName()]->getRate());
+            }
+            if (null === self::$nzd->getFactor()) {
+                self::$nzd->setFactor($exchangeRates[self::$nzd->getName()]->getRate());
+            }
+            if (null === self::$php->getFactor()) {
+                self::$php->setFactor($exchangeRates[self::$php->getName()]->getRate());
+            }
+            if (null === self::$sgd->getFactor()) {
+                self::$sgd->setFactor($exchangeRates[self::$sgd->getName()]->getRate());
+            }
+            if (null === self::$thb->getFactor()) {
+                self::$thb->setFactor($exchangeRates[self::$thb->getName()]->getRate());
+            }
+            if (null === self::$zar->getFactor()) {
+                self::$zar->setFactor($exchangeRates[self::$zar->getName()]->getRate());
+            }
         } catch (Exception $e) {
             throw new ConversionFailedException($e);
         }
