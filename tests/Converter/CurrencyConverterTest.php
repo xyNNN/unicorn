@@ -57,6 +57,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
     public function dataProvider()
     {
         $converter = $this->getConverter();
+        $converter->loadExchangeRates();
 
         return [
             [$converter, new ConvertibleValue(10, $converter::$eur), $converter::$usd, (10*$converter::$usd->getFactor()), Currency::USD, $converter::$usd->getAbbreviation()],

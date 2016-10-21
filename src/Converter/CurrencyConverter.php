@@ -10,8 +10,11 @@
 
 namespace Xynnn\Unicorn\Converter;
 
+use Exception;
 use SteffenBrand\CurrCurr\Client\EcbClientInterface;
 use SteffenBrand\CurrCurr\CurrCurr;
+use SteffenBrand\CurrCurr\Exception\ConversionFailedException;
+use SteffenBrand\CurrCurr\Exception\CurrencyNotSupportedException;
 use SteffenBrand\CurrCurr\Model\Currency;
 use Xynnn\Unicorn\Model\Unit;
 use Xynnn\Unicorn\Model\ConvertibleValue;
@@ -178,49 +181,48 @@ class CurrencyConverter extends AbstractMathematicalConverter
      */
     public static $zar;
 
+    private $exchangeRatesClient;
+
     /**
      * CurrencyConverter constructor.
      * @param EcbClientInterface $ecbClient leave blank for default ECB client
      */
     public function __construct(EcbClientInterface $ecbClient = null)
     {
-
-        $cc = new CurrCurr($ecbClient);
-        $exchangeRates = $cc->getExchangeRates();
+        $this->exchangeRatesClient = new CurrCurr($ecbClient);
 
         $this->units[] = self::$eur = new Unit('EUR', '€', 1);
-        $this->units[] = self::$usd = new Unit(Currency::USD, '$', $exchangeRates[Currency::USD]->getRate());
-        $this->units[] = self::$jpy = new Unit(Currency::JPY, '¥', $exchangeRates[Currency::JPY]->getRate());
-        $this->units[] = self::$bgn = new Unit(Currency::BGN, 'лв', $exchangeRates[Currency::BGN]->getRate());
-        $this->units[] = self::$czk = new Unit(Currency::CZK, 'Kč', $exchangeRates[Currency::CZK]->getRate());
-        $this->units[] = self::$dkk = new Unit(Currency::DKK, 'kr', $exchangeRates[Currency::DKK]->getRate());
-        $this->units[] = self::$gbp = new Unit(Currency::GBP, '£', $exchangeRates[Currency::GBP]->getRate());
-        $this->units[] = self::$huf = new Unit(Currency::HUF, 'Ft', $exchangeRates[Currency::HUF]->getRate());
-        $this->units[] = self::$pln = new Unit(Currency::PLN, 'zł', $exchangeRates[Currency::PLN]->getRate());
-        $this->units[] = self::$ron = new Unit(Currency::RON, 'lei', $exchangeRates[Currency::RON]->getRate());
-        $this->units[] = self::$sek = new Unit(Currency::SEK, 'kr', $exchangeRates[Currency::SEK]->getRate());
-        $this->units[] = self::$chf = new Unit(Currency::CHF, 'CHF', $exchangeRates[Currency::CHF]->getRate());
-        $this->units[] = self::$nok = new Unit(Currency::NOK, 'kr', $exchangeRates[Currency::NOK]->getRate());
-        $this->units[] = self::$hrk = new Unit(Currency::HRK, 'kn', $exchangeRates[Currency::HRK]->getRate());
-        $this->units[] = self::$rub = new Unit(Currency::RUB, 'руб', $exchangeRates[Currency::RUB]->getRate());
-        $this->units[] = self::$try = new Unit(Currency::TRY, '₺', $exchangeRates[Currency::TRY]->getRate());
-        $this->units[] = self::$aud = new Unit(Currency::AUD, '$', $exchangeRates[Currency::AUD]->getRate());
-        $this->units[] = self::$brl = new Unit(Currency::BRL, 'R$', $exchangeRates[Currency::BRL]->getRate());
-        $this->units[] = self::$cad = new Unit(Currency::CAD, '$', $exchangeRates[Currency::CAD]->getRate());
-        $this->units[] = self::$cny = new Unit(Currency::CNY, '¥', $exchangeRates[Currency::CNY]->getRate());
-        $this->units[] = self::$hkd = new Unit(Currency::HKD, '$', $exchangeRates[Currency::HKD]->getRate());
-        $this->units[] = self::$idr = new Unit(Currency::IDR, 'Rp', $exchangeRates[Currency::IDR]->getRate());
-        $this->units[] = self::$ils = new Unit(Currency::ILS, '₪', $exchangeRates[Currency::ILS]->getRate());
-        $this->units[] = self::$inr = new Unit(Currency::INR, '₹', $exchangeRates[Currency::INR]->getRate());
-        $this->units[] = self::$krw = new Unit(Currency::KRW, '₩', $exchangeRates[Currency::KRW]->getRate());
-        $this->units[] = self::$mxn = new Unit(Currency::MXN, '$', $exchangeRates[Currency::MXN]->getRate());
-        $this->units[] = self::$myr = new Unit(Currency::MYR, 'RM', $exchangeRates[Currency::MYR]->getRate());
-        $this->units[] = self::$nzd = new Unit(Currency::NZD, '$', $exchangeRates[Currency::NZD]->getRate());
-        $this->units[] = self::$php = new Unit(Currency::PHP, '₱', $exchangeRates[Currency::PHP]->getRate());
-        $this->units[] = self::$sgd = new Unit(Currency::SGD, '$', $exchangeRates[Currency::SGD]->getRate());
-        $this->units[] = self::$thb = new Unit(Currency::THB, '฿', $exchangeRates[Currency::THB]->getRate());
-        $this->units[] = self::$zar = new Unit(Currency::ZAR, 'R', $exchangeRates[Currency::ZAR]->getRate());
-
+        $this->units[] = self::$usd = new Unit(Currency::USD, '$');
+        $this->units[] = self::$jpy = new Unit(Currency::JPY, '¥');
+        $this->units[] = self::$bgn = new Unit(Currency::BGN, 'лв');
+        $this->units[] = self::$czk = new Unit(Currency::CZK, 'Kč');
+        $this->units[] = self::$dkk = new Unit(Currency::DKK, 'kr');
+        $this->units[] = self::$gbp = new Unit(Currency::GBP, '£');
+        $this->units[] = self::$huf = new Unit(Currency::HUF, 'Ft');
+        $this->units[] = self::$pln = new Unit(Currency::PLN, 'zł');
+        $this->units[] = self::$ron = new Unit(Currency::RON, 'lei');
+        $this->units[] = self::$sek = new Unit(Currency::SEK, 'kr');
+        $this->units[] = self::$chf = new Unit(Currency::CHF, 'CHF');
+        $this->units[] = self::$nok = new Unit(Currency::NOK, 'kr');
+        $this->units[] = self::$hrk = new Unit(Currency::HRK, 'kn');
+        $this->units[] = self::$rub = new Unit(Currency::RUB, 'руб');
+        $this->units[] = self::$try = new Unit(Currency::TRY, '₺');
+        $this->units[] = self::$aud = new Unit(Currency::AUD, '$');
+        $this->units[] = self::$brl = new Unit(Currency::BRL, 'R$');
+        $this->units[] = self::$cad = new Unit(Currency::CAD, '$');
+        $this->units[] = self::$cny = new Unit(Currency::CNY, '¥');
+        $this->units[] = self::$hkd = new Unit(Currency::HKD, '$');
+        $this->units[] = self::$idr = new Unit(Currency::IDR, 'Rp');
+        $this->units[] = self::$ils = new Unit(Currency::ILS, '₪');
+        $this->units[] = self::$inr = new Unit(Currency::INR, '₹');
+        $this->units[] = self::$krw = new Unit(Currency::KRW, '₩');
+        $this->units[] = self::$mxn = new Unit(Currency::MXN, '$');
+        $this->units[] = self::$myr = new Unit(Currency::MYR, 'RM');
+        $this->units[] = self::$nzd = new Unit(Currency::NZD, '$');
+        $this->units[] = self::$php = new Unit(Currency::PHP, '₱');
+        $this->units[] = self::$sgd = new Unit(Currency::SGD, '$');
+        $this->units[] = self::$thb = new Unit(Currency::THB, '฿');
+        $this->units[] = self::$zar = new Unit(Currency::ZAR, 'R');
     }
 
     /**
@@ -232,12 +234,73 @@ class CurrencyConverter extends AbstractMathematicalConverter
     }
 
     /**
+     * @param ConvertibleValue $from
+     * @param Unit $to
+     * @return ConvertibleValue
+     */
+    public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
+    {
+        if (null === $from->getUnit()->getFactor() || null === $to->getFactor()) {
+            $this->loadExchangeRates();
+        }
+
+        return parent::convert($from, $to);
+    }
+
+    /**
      * @param ConvertibleValue $cv The Convertible to be normalized
      */
     protected function normalize(ConvertibleValue $cv)
     {
+        if (null === $cv->getUnit()->getFactor()) {
+            $this->loadExchangeRates();
+            if (null === $cv->getUnit()->getFactor()) {
+                throw new ConversionFailedException(new CurrencyNotSupportedException());
+            }
+        }
         parent::normalize($cv);
         $cv->setUnit(self::$eur);
+    }
+
+    public function loadExchangeRates()
+    {
+        try {
+            $exchangeRates = $this->exchangeRatesClient->getExchangeRates();
+
+            self::$usd->setFactor($exchangeRates[self::$usd->getName()]->getRate());
+            self::$jpy->setFactor($exchangeRates[self::$jpy->getName()]->getRate());
+            self::$bgn->setFactor($exchangeRates[self::$bgn->getName()]->getRate());
+            self::$czk->setFactor($exchangeRates[self::$czk->getName()]->getRate());
+            self::$dkk->setFactor($exchangeRates[self::$dkk->getName()]->getRate());
+            self::$gbp->setFactor($exchangeRates[self::$gbp->getName()]->getRate());
+            self::$huf->setFactor($exchangeRates[self::$huf->getName()]->getRate());
+            self::$pln->setFactor($exchangeRates[self::$pln->getName()]->getRate());
+            self::$ron->setFactor($exchangeRates[self::$ron->getName()]->getRate());
+            self::$sek->setFactor($exchangeRates[self::$sek->getName()]->getRate());
+            self::$chf->setFactor($exchangeRates[self::$chf->getName()]->getRate());
+            self::$nok->setFactor($exchangeRates[self::$nok->getName()]->getRate());
+            self::$hrk->setFactor($exchangeRates[self::$hrk->getName()]->getRate());
+            self::$rub->setFactor($exchangeRates[self::$rub->getName()]->getRate());
+            self::$try->setFactor($exchangeRates[self::$try->getName()]->getRate());
+            self::$aud->setFactor($exchangeRates[self::$aud->getName()]->getRate());
+            self::$brl->setFactor($exchangeRates[self::$brl->getName()]->getRate());
+            self::$cad->setFactor($exchangeRates[self::$cad->getName()]->getRate());
+            self::$cny->setFactor($exchangeRates[self::$cny->getName()]->getRate());
+            self::$hkd->setFactor($exchangeRates[self::$hkd->getName()]->getRate());
+            self::$idr->setFactor($exchangeRates[self::$idr->getName()]->getRate());
+            self::$ils->setFactor($exchangeRates[self::$ils->getName()]->getRate());
+            self::$inr->setFactor($exchangeRates[self::$inr->getName()]->getRate());
+            self::$krw->setFactor($exchangeRates[self::$krw->getName()]->getRate());
+            self::$mxn->setFactor($exchangeRates[self::$mxn->getName()]->getRate());
+            self::$myr->setFactor($exchangeRates[self::$myr->getName()]->getRate());
+            self::$nzd->setFactor($exchangeRates[self::$nzd->getName()]->getRate());
+            self::$php->setFactor($exchangeRates[self::$php->getName()]->getRate());
+            self::$sgd->setFactor($exchangeRates[self::$sgd->getName()]->getRate());
+            self::$thb->setFactor($exchangeRates[self::$thb->getName()]->getRate());
+            self::$zar->setFactor($exchangeRates[self::$zar->getName()]->getRate());
+        } catch (Exception $e) {
+            throw new ConversionFailedException($e);
+        }
     }
 
 }
