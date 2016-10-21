@@ -71,11 +71,6 @@ class LengthConverter extends AbstractMathematicalConverter
     public static $mile;
 
     /**
-     * @var array List of convertible units
-     */
-    protected $units = [];
-
-    /**
      * LengthConverter constructor.
      */
     public function __construct()

@@ -42,12 +42,23 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Xynnn\Unicorn\Exception\UnsupportedUnitException
-     * @expectedExceptionMessage The conversion of "micrometer" is not possible. Make sure to use the static units from the converter instance.
+     * @expectedExceptionMessage The conversion of "noUnit" is not possible. Make sure to add it to the converters units array first.
      */
     public function testWrongTypePassed()
     {
         $converter = $this->getConverter();
-        $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), new Unit('micrometer', 'µm', 1000000));
+        $converter->convert(new ConvertibleValue(10000, $converter::$nanometer), new Unit('noUnit', 'nu', 1));
+    }
+
+    public function testOwnTypePassed()
+    {
+        $converter = $this->getConverter();
+        $converter->addUnit(new Unit('myUnit', 'mu', 5));
+        $result = $converter->convert(new ConvertibleValue(1, $converter::$meter), new Unit('myUnit', 'mu', 5));
+
+        $this->assertEquals(5, $result->getValue());
+        $this->assertEquals(new Unit('myUnit', 'mu', 5), $result->getUnit());
+        $this->assertEquals('mu', $result->getUnit()->getAbbreviation());
     }
 
     /**

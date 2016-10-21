@@ -179,11 +179,6 @@ class CurrencyConverter extends AbstractMathematicalConverter
     public static $zar;
 
     /**
-     * @var array List of convertible units
-     */
-    protected $units = [];
-
-    /**
      * CurrencyConverter constructor.
      * @param EcbClientInterface $ecbClient leave blank for default ECB client
      */

@@ -17,10 +17,11 @@ use Xynnn\Unicorn\Model\Unit;
 
 abstract class AbstractConverter implements ConverterInterface
 {
+
     /**
-     * @var array
+     * @var array List of convertible units
      */
-    protected $units;
+    protected $units = [];
 
     /**
      * @return string
@@ -52,7 +53,7 @@ abstract class AbstractConverter implements ConverterInterface
     {
         foreach ($units as $unit) {
             // make sure the unit is not just an instance of Unit, but the real same instance from the Converter
-            if (!in_array($unit, $this->units, true)) {
+            if (!in_array($unit, $this->units)) {
                 throw new UnsupportedUnitException($unit);
             }
         }
@@ -67,8 +68,37 @@ abstract class AbstractConverter implements ConverterInterface
     }
 
     /**
-     * @param ConvertibleValue $from
-     * @param Unit $to
+     * @param ConvertibleValue $from The convertible to be converted
+     * @param Unit $to               Unit to which is to be converted
      */
-    abstract protected function convertTo(ConvertibleValue $from, Unit $to);
+    protected function convertTo(ConvertibleValue $from, Unit $to)
+    {
+        $from->setValue($from->getValue() * $to->getFactor());
+        $from->setUnit($to);
+    }
+
+    /**
+     * @return array
+     */
+    public function getUnits(): array
+    {
+        return $this->units;
+    }
+
+    /**
+     * @param array $units
+     */
+    public function setUnits(array $units)
+    {
+        $this->units = $units;
+    }
+
+    /**
+     * @param Unit $unit
+     */
+    public function addUnit(Unit $unit)
+    {
+        $this->units[] = $unit;
+    }
+
 }
