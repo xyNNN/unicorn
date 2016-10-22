@@ -51,6 +51,17 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
         $converter->convert(new ConvertibleValue(10, $converter::$eur), new Unit('eur', '€', 1));
     }
 
+    public function testOwnTypePassed()
+    {
+        $converter = $this->getConverter();
+        $converter->addUnit(new Unit('myCurrency', 'mc', 5));
+        $result = $converter->convert(new ConvertibleValue(1, $converter::$eur), new Unit('myCurrency', 'mc', 5));
+
+        $this->assertEquals(5, $result->getValue());
+        $this->assertEquals(new Unit('myCurrency', 'mc', 5), $result->getUnit());
+        $this->assertEquals('mc', $result->getUnit()->getAbbreviation());
+    }
+
     /**
      * @return array
      */
