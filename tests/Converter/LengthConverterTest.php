@@ -10,11 +10,12 @@
 
 namespace Xynnn\Unicorn\Tests\Converter;
 
+use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\LengthConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
-class LengthConverterTest extends \PHPUnit_Framework_TestCase
+class LengthConverterTest extends PHPUnit_Framework_TestCase
 {
     public function testIsInstantiable()
     {
@@ -46,7 +47,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $converter->addUnit(new Unit('myUnit', 'mu', '5'));
         $result = $converter->convert(new ConvertibleValue('1', $converter::$meter), new Unit('myUnit', 'mu', '5'));
 
-        $this->assertEquals(5, $result->getValue());
+        $this->assertEquals('5', $result->getValue());
         $this->assertEquals(new Unit('myUnit', 'mu', '5'), $result->getUnit());
         $this->assertEquals('mu', $result->getUnit()->getAbbreviation());
     }

@@ -34,7 +34,7 @@ class ConvertibleValue
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue(): string
     {

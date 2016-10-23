@@ -9,13 +9,14 @@
  */
 namespace Xynnn\Unicorn\Tests\Converter;
 
+use PHPUnit_Framework_TestCase;
 use SteffenBrand\CurrCurr\Client\EcbClientMock;
 use SteffenBrand\CurrCurr\Model\Currency;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
-class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
+class CurrencyConverterTest extends PHPUnit_Framework_TestCase
 {
     public function testIsInstantiable()
     {
