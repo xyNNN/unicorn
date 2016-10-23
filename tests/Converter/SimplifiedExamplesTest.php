@@ -58,4 +58,38 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
         $result->getUnit()->getName(); // 'centimeter'
     }
 
+    public function testSimpleAddition()
+    {
+        // example for adding two values, even with using different units
+        // mathematical operations keep the unit of the first ConvertibleValue
+        $converter = new LengthConverter();
+        $result = $converter->add(
+            new ConvertibleValue('1', $converter::$meter),
+            new ConvertibleValue('200', $converter::$centimeter)
+        );
+
+        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        $result->getValue(); // '2.0' with 999 decimals
+        $result->getFloatValue(); // 2
+        $result->getUnit()->getAbbreviation(); // 'm'
+        $result->getUnit()->getName(); // 'meter'
+    }
+
+    public function testSimpleSubtraction()
+    {
+        // example for adding two values, even with using different units
+        // mathematical operations keep the unit of the first ConvertibleValue
+        $converter = new LengthConverter();
+        $result = $converter->subtract(
+            new ConvertibleValue('500', $converter::$centimeter),
+            new ConvertibleValue('3', $converter::$meter)
+        );
+
+        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        $result->getValue(); // '200.0' with 999 decimals
+        $result->getFloatValue(); // 200
+        $result->getUnit()->getAbbreviation(); // 'cm'
+        $result->getUnit()->getName(); // 'centimeter'
+    }
+
 }
