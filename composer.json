@@ -18,6 +18,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.0",
+    "ext-bcmath": "*",
     "steffenbrand/curr-curr": "^2.1"
   },
   "require-dev": {

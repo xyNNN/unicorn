@@ -32,33 +32,23 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The given ConvertibleValue is not valid for conversion.
-     */
-    public function testWrongValuePassed()
-    {
-        $converter = $this->getConverter();
-        $converter->convert(new ConvertibleValue('string', $converter::$eur), $converter::$usd);
-    }
-
-    /**
      * @expectedException \Xynnn\Unicorn\Exception\UnsupportedUnitException
      * @expectedExceptionMessage The conversion of "eur" is not possible. Make sure to add it to the converters units array first.
      */
     public function testWrongTypePassed()
     {
         $converter = $this->getConverter();
-        $converter->convert(new ConvertibleValue(10, $converter::$eur), new Unit('eur', '€', 1));
+        $converter->convert(new ConvertibleValue('10', $converter::$eur), new Unit('eur', '€', '1'));
     }
 
     public function testOwnTypePassed()
     {
         $converter = $this->getConverter();
-        $converter->addUnit(new Unit('myCurrency', 'mc', 5));
-        $result = $converter->convert(new ConvertibleValue(1, $converter::$eur), new Unit('myCurrency', 'mc', 5));
+        $converter->addUnit(new Unit('myCurrency', 'mc', '5'));
+        $result = $converter->convert(new ConvertibleValue('1', $converter::$eur), new Unit('myCurrency', 'mc', '5'));
 
-        $this->assertEquals(5, $result->getValue());
-        $this->assertEquals(new Unit('myCurrency', 'mc', 5), $result->getUnit());
+        $this->assertEquals('5', $result->getValue());
+        $this->assertEquals(new Unit('myCurrency', 'mc', '5'), $result->getUnit());
         $this->assertEquals('mc', $result->getUnit()->getAbbreviation());
     }
 
@@ -71,8 +61,8 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
         $converter->loadExchangeRates();
 
         return [
-            [$converter, new ConvertibleValue(10, $converter::$eur), $converter::$usd, (10*$converter::$usd->getFactor()), Currency::USD, $converter::$usd->getAbbreviation()],
-            [$converter, new ConvertibleValue((10*$converter::$usd->getFactor()), $converter::$usd), $converter::$eur, 10, 'EUR', '€']
+            [$converter, new ConvertibleValue('10', $converter::$eur), $converter::$usd, bcmul('10', $converter::$usd->getFactor(), $converter::MAX_DECIMALS), Currency::USD, $converter::$usd->getAbbreviation()],
+            [$converter, new ConvertibleValue(bcmul('10', $converter::$usd->getFactor(), $converter::MAX_DECIMALS), $converter::$usd), $converter::$eur, '10', 'EUR', '€']
         ];
     }
 
@@ -107,8 +97,8 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
 
         // sum up two different units
         $addition = $converter->add(
-            new ConvertibleValue(10.45, $converter::$eur),
-            new ConvertibleValue(100.77, $converter::$usd)
+            new ConvertibleValue('10.12345678908745', $converter::$eur),
+            new ConvertibleValue('100.77', $converter::$usd)
         );
 
         // convert them to jpy
@@ -117,14 +107,14 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
         // subtract eur from jpy
         $subtraction = $converter->subtract(
             $jpy,
-            new ConvertibleValue(10.45, $converter::$eur)
+            new ConvertibleValue('10.12345678908745', $converter::$eur)
         );
 
         // convert back to usd
         $usd = $converter->convert($subtraction, $converter::$usd);
 
         // make sure no rounding error occured
-        $this->assertEquals(100.77, $usd->getValue(), 'rounding error occured');
+        $this->assertEquals('100.77', $usd->getValue(), 'unexpected rounding error occured');
     }
 
     /**

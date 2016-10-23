@@ -24,7 +24,7 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
     public function add(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
         $givenUnit = $this->getCurrentUnitAndNormalize($cv1, $cv2);
-        $cv1->setValue($cv1->getValue() + $cv2->getValue());
+        $cv1->setValue(bcadd($cv1->getValue(), $cv2->getValue(), self::MAX_DECIMALS));
 
         return $this->convert($cv1, $givenUnit);
     }
@@ -37,7 +37,7 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
     public function subtract(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
         $givenUnit = $this->getCurrentUnitAndNormalize($cv1, $cv2);
-        $cv1->setValue($cv1->getValue() - $cv2->getValue());
+        $cv1->setValue(bcsub($cv1->getValue(), $cv2->getValue(), self::MAX_DECIMALS));
 
         return $this->convert($cv1, $givenUnit);
     }

@@ -18,8 +18,10 @@ use Xynnn\Unicorn\Model\Unit;
 abstract class AbstractConverter implements ConverterInterface
 {
 
+    const MAX_DECIMALS = 999;
+
     /**
-     * @var array List of convertible units
+     * @var Unit[] List of convertible units
      */
     protected $units = [];
 
@@ -35,7 +37,7 @@ abstract class AbstractConverter implements ConverterInterface
      */
     public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
     {
-        if (!$from instanceof ConvertibleValue || !is_numeric($from->getValue()) || !$from->getUnit() instanceof Unit) {
+        if (!$from instanceof ConvertibleValue || !is_string($from->getValue()) || !$from->getUnit() instanceof Unit) {
             throw new \InvalidArgumentException('The given ConvertibleValue is not valid for conversion.');
         }
 
@@ -52,7 +54,7 @@ abstract class AbstractConverter implements ConverterInterface
     protected function validate(array $units)
     {
         foreach ($units as $unit) {
-            // make sure the unit is not just an instance of Unit, but the real same instance from the Converter
+            // make sure the unit is equal to an instance in the converters units array
             if (!in_array($unit, $this->units)) {
                 throw new UnsupportedUnitException($unit);
             }
@@ -64,7 +66,7 @@ abstract class AbstractConverter implements ConverterInterface
      */
     protected function normalize(ConvertibleValue $cv)
     {
-        $cv->setValue($cv->getValue() / $cv->getUnit()->getFactor());
+        $cv->setValue(bcdiv($cv->getValue(), $cv->getUnit()->getFactor(), self::MAX_DECIMALS));
     }
 
     /**
@@ -73,7 +75,7 @@ abstract class AbstractConverter implements ConverterInterface
      */
     protected function convertTo(ConvertibleValue $from, Unit $to)
     {
-        $from->setValue($from->getValue() * $to->getFactor());
+        $from->setValue(bcmul($from->getValue(), $to->getFactor(), self::MAX_DECIMALS));
         $from->setUnit($to);
     }
 

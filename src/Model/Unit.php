@@ -22,7 +22,7 @@ class Unit
     private $abbreviation;
 
     /**
-     * @var float $factor Factor for normalization
+     * @var string $factor Factor for normalization
      */
     private $factor;
 
@@ -30,9 +30,9 @@ class Unit
      * Unit constructor.
      * @param string $name         Name of the unit
      * @param string $abbreviation Mathematical abbreviation of the unit
-     * @param float $factor        Factor for normalization
+     * @param string $factor        Factor for normalization
      */
-    public function __construct(string $name, string $abbreviation, float $factor = null)
+    public function __construct(string $name, string $abbreviation, string $factor = null)
     {
         $this->name = $name;
         $this->abbreviation = $abbreviation;
@@ -72,19 +72,27 @@ class Unit
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getFactor()
+    public function getFactor(): string
     {
         return $this->factor;
     }
 
     /**
-     * @param float $factor
+     * @param string $factor
      */
-    public function setFactor(float $factor)
+    public function setFactor(string $factor)
     {
         $this->factor = $factor;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isFactorSet(): bool
+    {
+        return !empty($this->factor);
     }
 
 }

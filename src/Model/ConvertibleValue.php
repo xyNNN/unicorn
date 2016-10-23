@@ -13,7 +13,7 @@ namespace Xynnn\Unicorn\Model;
 class ConvertibleValue
 {
     /**
-     * @var mixed $value The actual value
+     * @var string $value The actual value
      */
     private $value;
 
@@ -24,10 +24,10 @@ class ConvertibleValue
 
     /**
      * Value constructor.
-     * @param mixed $value
+     * @param string $value
      * @param Unit $unit
      */
-    public function __construct($value, Unit $unit)
+    public function __construct(string $value, Unit $unit)
     {
         $this->value = $value;
         $this->unit = $unit;
@@ -42,9 +42,9 @@ class ConvertibleValue
     }
 
     /**
-     * @param mixed $value
+     * @param string $value
      */
-    public function setValue($value)
+    public function setValue(string $value)
     {
         $this->value = $value;
     }
