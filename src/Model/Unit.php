@@ -92,7 +92,7 @@ class Unit
      */
     public function isFactorSet(): bool
     {
-        return !empty($this->factor);
+        return isset($this->factor);
     }
 
 }
