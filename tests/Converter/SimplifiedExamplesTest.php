@@ -24,7 +24,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
         $converter = new LengthConverter();
         $result = $converter->convert(new ConvertibleValue('110', $converter::$centimeter), $converter::$meter);
 
-        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        // $result is an instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
         $result->getValue(); // '1.10...' with 999 decimals
         $result->getFloatValue(); // 1.1
         $result->getUnit()->getAbbreviation(); // 'm'
@@ -37,7 +37,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
         $converter = new CurrencyConverter();
         $result = $converter->convert(new ConvertibleValue('10', $converter::$eur), $converter::$usd);
 
-        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        // $result is an instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
         $result->getValue(); // something around '10.90...' with 999 decimals, depends on current exchange rate
         $result->getFloatValue(); // something around 10.9, depends on current exchange rate
         $result->getUnit()->getAbbreviation(); // '$'
@@ -51,7 +51,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
         $converter = new LengthConverter();
         $result = $converter->convert(new ConvertibleValue(1.1, $converter::$meter), $converter::$centimeter);
 
-        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        // $result is an instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
         $result->getValue(); // '110.0...' with 999 decimals
         $result->getFloatValue(); // 110
         $result->getUnit()->getAbbreviation(); // 'cm'
@@ -68,7 +68,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
             new ConvertibleValue('200', $converter::$centimeter)
         );
 
-        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        // $result is an instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
         $result->getValue(); // '2.0' with 999 decimals
         $result->getFloatValue(); // 2
         $result->getUnit()->getAbbreviation(); // 'm'
@@ -85,7 +85,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
             new ConvertibleValue('3', $converter::$meter)
         );
 
-        $result; // Instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
+        // $result is an instance of ConvertibleValue that you can also use for following conversions, mathematical operations, etc.
         $result->getValue(); // '200.0' with 999 decimals
         $result->getFloatValue(); // 200
         $result->getUnit()->getAbbreviation(); // 'cm'
