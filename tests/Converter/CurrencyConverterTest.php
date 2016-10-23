@@ -110,6 +110,13 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('100.77', $usd->getValue(), 'unexpected rounding error occured');
     }
 
+    public function testGetFloatValTrimsTrailingZeros()
+    {
+        $converter = $this->getConverter();
+        $cv = new ConvertibleValue('10.12345678900000', $converter::$eur);
+        $this->assertEquals(10.123456789, $cv->getFloatValue());
+    }
+
     /**
      * @return CurrencyConverter
      */

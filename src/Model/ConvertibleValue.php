@@ -64,4 +64,10 @@ class ConvertibleValue
     {
         $this->unit = $unit;
     }
+
+    public function getFloatValue(): float
+    {
+        return floatval($this->value);
+    }
+
 }
