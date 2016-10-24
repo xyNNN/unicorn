@@ -155,7 +155,7 @@ class LengthConverterTest extends PHPUnit_Framework_TestCase
     {
         $converter = $this->getConverter();
         $result = $converter->convert(
-            $converter->subtract(
+            $converter->sub(
                 new ConvertibleValue('20000', $converter::$nanometer),
                 new ConvertibleValue('10', $converter::$micrometer)
             ),
@@ -171,8 +171,8 @@ class LengthConverterTest extends PHPUnit_Framework_TestCase
     {
         $converter = $this->getConverter();
         $result = $converter->convert(
-            $converter->subtract(
-                $converter->subtract(
+            $converter->sub(
+                $converter->sub(
                     new ConvertibleValue('100000', $converter::$nanometer),
                     new ConvertibleValue('10', $converter::$micrometer)
                 ),
@@ -203,7 +203,7 @@ class LengthConverterTest extends PHPUnit_Framework_TestCase
     public function testSubtractionMustNotChangeUnit()
     {
         $converter = $this->getConverter();
-        $result = $converter->subtract(
+        $result = $converter->sub(
             new ConvertibleValue('2', $converter::$kilometer),
             new ConvertibleValue('1000', $converter::$meter)
         );

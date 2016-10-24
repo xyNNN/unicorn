@@ -80,7 +80,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
         // example for adding two values, even with using different units
         // mathematical operations keep the unit of the first ConvertibleValue
         $converter = new LengthConverter();
-        $result = $converter->subtract(
+        $result = $converter->sub(
             new ConvertibleValue('500', $converter::$centimeter),
             new ConvertibleValue('3', $converter::$meter)
         );

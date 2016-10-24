@@ -34,7 +34,7 @@ abstract class AbstractMathematicalConverter extends AbstractConverter
      * @param ConvertibleValue $cv2
      * @return ConvertibleValue
      */
-    public function subtract(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
+    public function sub(ConvertibleValue $cv1, ConvertibleValue $cv2): ConvertibleValue
     {
         $givenUnit = $this->getCurrentUnitAndNormalize($cv1, $cv2);
         $cv1->setValue(bcsub($cv1->getValue(), $cv2->getValue(), self::MAX_DECIMALS));

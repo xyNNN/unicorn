@@ -99,7 +99,7 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
         $jpy = $converter->convert($addition, $converter::$jpy);
 
         // subtract eur from jpy
-        $subtraction = $converter->subtract(
+        $subtraction = $converter->sub(
             $jpy,
             new ConvertibleValue('10.12345678908745', $converter::$eur)
         );
