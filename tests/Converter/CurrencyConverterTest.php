@@ -72,11 +72,11 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
      * @param CurrencyConverter $converter
      * @param ConvertibleValue $from
      * @param Unit $to
-     * @param float $expectedValue
+     * @param string $expectedValue
      * @param string $expectedUnitName
      * @param string $expectedUnitAbbreviation
      */
-    public function testConversion(CurrencyConverter $converter, ConvertibleValue $from, Unit $to, float $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
+    public function testConversion(CurrencyConverter $converter, ConvertibleValue $from, Unit $to, string $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
     {
         $result = $converter->convert($from, $to);
 

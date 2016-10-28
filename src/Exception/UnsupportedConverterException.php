@@ -10,7 +10,9 @@
 
 namespace Xynnn\Unicorn\Exception;
 
-class UnsupportedConverterException extends \InvalidArgumentException
+use InvalidArgumentException;
+
+class UnsupportedConverterException extends InvalidArgumentException
 {
     /**
      * @param string $name

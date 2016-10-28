@@ -10,11 +10,13 @@
 
 namespace Xynnn\Unicorn\Tests\Converter;
 
+use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
 use Xynnn\Unicorn\Converter\LengthConverter;
+use Xynnn\Unicorn\Converter\TemperatureConverter;
 use Xynnn\Unicorn\ConverterRegistry;
 
-class ConverterRegistryTest extends \PHPUnit_Framework_TestCase
+class ConverterRegistryTest extends PHPUnit_Framework_TestCase
 {
     public function testIsInstantiable()
     {
@@ -29,6 +31,7 @@ class ConverterRegistryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(LengthConverter::class, get_class($registry->get('unicorn.converter.length')));
         $this->assertEquals(CurrencyConverter::class, get_class($registry->get('unicorn.converter.currency')));
+        $this->assertEquals(TemperatureConverter::class, get_class($registry->get('unicorn.converter.temperature')));
     }
 
     /**
@@ -47,7 +50,11 @@ class ConverterRegistryTest extends \PHPUnit_Framework_TestCase
      */
     private function getRegistry() : ConverterRegistry
     {
-        $registry = new ConverterRegistry([new LengthConverter(), new CurrencyConverter()]);
+        $registry = new ConverterRegistry([
+            new LengthConverter(),
+            new CurrencyConverter(),
+            new TemperatureConverter()
+        ]);
 
         return $registry;
     }

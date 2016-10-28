@@ -277,4 +277,20 @@ class CurrencyConverter extends AbstractMathematicalConverter
         }
     }
 
+    /**
+     * @param array $units
+     */
+    public function setUnits(array $units)
+    {
+        $this->units = $units;
+    }
+
+    /**
+     * @param Unit $unit
+     */
+    public function addUnit(Unit $unit)
+    {
+        $this->units[] = $unit;
+    }
+
 }

@@ -10,9 +10,10 @@
 
 namespace Xynnn\Unicorn\Exception;
 
+use InvalidArgumentException;
 use Xynnn\Unicorn\Model\Unit;
 
-class UnsupportedUnitException extends \InvalidArgumentException
+class UnsupportedUnitException extends InvalidArgumentException
 {
     /**
      * @param Unit $unit

@@ -17,16 +17,28 @@ class TemperatureConverter extends AbstractMathematicalConverter
 {
 
     /**
-     * @var Unit $newton_meter Static instance for conversions
+     * @var Unit $celsius Static instance for conversions
      */
-    public static $newton_meter;
+    public static $celsius;
+
+    /**
+     * @var Unit $fahrenheit Static instance for conversions
+     */
+    public static $fahrenheit;
+
+    /**
+     * @var Unit $kelvin Static instance for conversions
+     */
+    public static $kelvin;
 
     /**
      * LengthConverter constructor.
      */
     public function __construct()
     {
-        $this->units[] = self::$newton_meter = new Unit('Newtonmeter ', 'nm', '1');
+        $this->units[] = self::$celsius = new Unit('Celsius ', '°C');
+        $this->units[] = self::$fahrenheit = new Unit('Fahrenheit ', '°F');
+        $this->units[] = self::$kelvin = new Unit('Kelvin ', 'K');
     }
 
     /**
@@ -34,7 +46,7 @@ class TemperatureConverter extends AbstractMathematicalConverter
      */
     public function getName(): string
     {
-        return 'unicorn.converter.storage';
+        return 'unicorn.converter.temperature';
     }
 
     /**
@@ -42,8 +54,48 @@ class TemperatureConverter extends AbstractMathematicalConverter
      */
     protected function normalize(ConvertibleValue $cv)
     {
-        parent::normalize($cv);
-        $cv->setUnit(self::$newton_meter);
+        switch ($cv->getUnit()) {
+
+            case self::$fahrenheit:
+                $value = bcdiv(bcmul(bcsub($cv->getValue(), '32', self::MAX_DECIMALS), '5', self::MAX_DECIMALS), '9', self::MAX_DECIMALS);
+                break;
+
+            case self::$kelvin:
+                $value = bcsub($cv->getValue(), '273.15', self::MAX_DECIMALS);
+                break;
+
+            default:
+                $value = $cv->getValue();
+
+        }
+
+        $cv->setValue($value);
+        $cv->setUnit(self::$celsius);
+    }
+
+    /**
+     * @param ConvertibleValue $from The convertible to be converted
+     * @param Unit $to               Unit to which is to be converted
+     */
+    protected function convertTo(ConvertibleValue $from, Unit $to)
+    {
+        switch ($to) {
+
+            case self::$fahrenheit:
+                $value = bcadd(bcdiv(bcmul($from->getValue(), '9', self::MAX_DECIMALS), '5', self::MAX_DECIMALS), '32', self::MAX_DECIMALS);
+                break;
+
+            case self::$kelvin:
+                $value = bcadd($from->getValue(), '273.15', self::MAX_DECIMALS);
+                break;
+
+            default:
+                $value = $from->getValue();
+
+        }
+
+        $from->setValue($value);
+        $from->setUnit($to);
     }
 
 }
