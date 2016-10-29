@@ -12,6 +12,7 @@ namespace Xynnn\Unicorn\Tests\Converter;
 
 use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
+use Xynnn\Unicorn\Converter\DataStorageConverter;
 use Xynnn\Unicorn\Converter\LengthConverter;
 use Xynnn\Unicorn\Converter\TemperatureConverter;
 use Xynnn\Unicorn\ConverterRegistry;
@@ -32,6 +33,7 @@ class ConverterRegistryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(LengthConverter::class, get_class($registry->get('unicorn.converter.length')));
         $this->assertEquals(CurrencyConverter::class, get_class($registry->get('unicorn.converter.currency')));
         $this->assertEquals(TemperatureConverter::class, get_class($registry->get('unicorn.converter.temperature')));
+        $this->assertEquals(DataStorageConverter::class, get_class($registry->get('unicorn.converter.datastorage')));
     }
 
     /**
@@ -53,7 +55,8 @@ class ConverterRegistryTest extends PHPUnit_Framework_TestCase
         $registry = new ConverterRegistry([
             new LengthConverter(),
             new CurrencyConverter(),
-            new TemperatureConverter()
+            new TemperatureConverter(),
+            new DataStorageConverter()
         ]);
 
         return $registry;
