@@ -9,11 +9,10 @@
  */
 namespace Xynnn\Unicorn\Tests\Converter;
 
-use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\TemperatureConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 
-class TemperatureConverterTest extends PHPUnit_Framework_TestCase
+class TemperatureConverterTest extends AbstractConverterTest
 {
     public function testIsInstantiable()
     {

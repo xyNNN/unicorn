@@ -10,12 +10,11 @@
 
 namespace Xynnn\Unicorn\Tests\Converter;
 
-use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\LengthConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
-class LengthConverterTest extends PHPUnit_Framework_TestCase
+class LengthConverterTest extends AbstractConverterTest
 {
     public function testIsInstantiable()
     {

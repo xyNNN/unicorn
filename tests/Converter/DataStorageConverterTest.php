@@ -9,11 +9,10 @@
  */
 namespace Xynnn\Unicorn\Tests\Converter;
 
-use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\DataStorageConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 
-class DataStorageConverterTest extends PHPUnit_Framework_TestCase
+class DataStorageConverterTest extends AbstractConverterTest
 {
     public function testIsInstantiable()
     {
