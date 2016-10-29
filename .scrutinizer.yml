@@ -5,6 +5,11 @@ tools:
     external_code_coverage: true
 
 build:
+    environment:
+        php:
+            version: "7.0"
+            ini:
+                'date.timezone': 'Europe/Berlin'
     tests:
         override:
             -
