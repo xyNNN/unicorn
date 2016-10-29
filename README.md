@@ -1,5 +1,8 @@
 # unicorn
 
+[![Code Coverage](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/build.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
 [![Software License](https://img.shields.io/badge/license-LGPL%203.0-brightgreen.svg?style=flat-square)](LICENSE)
 
 A PHP based framework agnostic library to convert several units
