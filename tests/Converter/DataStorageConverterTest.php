@@ -12,7 +12,6 @@ namespace Xynnn\Unicorn\Tests\Converter;
 use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\DataStorageConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
-use Xynnn\Unicorn\Model\Unit;
 
 class DataStorageConverterTest extends PHPUnit_Framework_TestCase
 {
@@ -50,24 +49,6 @@ class DataStorageConverterTest extends PHPUnit_Framework_TestCase
             [$converter, new ConvertibleValue('1', $converter::$gibibit), $converter::$mebibit, '1024', $converter::$mebibit->getName(), $converter::$mebibit->getAbbreviation()],
             [$converter, new ConvertibleValue('1', $converter::$gibibit), $converter::$megabyte, '134.217728', $converter::$megabyte->getName(), $converter::$megabyte->getAbbreviation()]
         ];
-    }
-
-    /**
-     * @dataProvider dataProvider
-     * @param DataStorageConverter $converter
-     * @param ConvertibleValue $from
-     * @param Unit $to
-     * @param string $expectedValue
-     * @param string $expectedUnitName
-     * @param string $expectedUnitAbbreviation
-     */
-    public function testConversion(DataStorageConverter $converter, ConvertibleValue $from, Unit $to, string $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
-    {
-        $result = $converter->convert($from, $to);
-
-        $this->assertEquals($expectedValue, $result->getValue());
-        $this->assertEquals($expectedUnitName, $result->getUnit()->getName());
-        $this->assertEquals($expectedUnitAbbreviation, $result->getUnit()->getAbbreviation());
     }
 
     /**

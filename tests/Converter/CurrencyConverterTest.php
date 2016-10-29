@@ -9,14 +9,13 @@
  */
 namespace Xynnn\Unicorn\Tests\Converter;
 
-use PHPUnit_Framework_TestCase;
 use SteffenBrand\CurrCurr\Client\EcbClientMock;
 use SteffenBrand\CurrCurr\Model\Currency;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 use Xynnn\Unicorn\Model\Unit;
 
-class CurrencyConverterTest extends PHPUnit_Framework_TestCase
+class CurrencyConverterTest extends AbstractConverterTest
 {
     public function testIsInstantiable()
     {
@@ -65,24 +64,6 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
             [$converter, new ConvertibleValue('10', $converter::$eur), $converter::$usd, bcmul('10', $converter::$usd->getFactor(), $converter::MAX_DECIMALS), Currency::USD, $converter::$usd->getAbbreviation()],
             [$converter, new ConvertibleValue(bcmul('10', $converter::$usd->getFactor(), $converter::MAX_DECIMALS), $converter::$usd), $converter::$eur, '10', 'EUR', '€']
         ];
-    }
-
-    /**
-     * @dataProvider dataProvider
-     * @param CurrencyConverter $converter
-     * @param ConvertibleValue $from
-     * @param Unit $to
-     * @param string $expectedValue
-     * @param string $expectedUnitName
-     * @param string $expectedUnitAbbreviation
-     */
-    public function testConversion(CurrencyConverter $converter, ConvertibleValue $from, Unit $to, string $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
-    {
-        $result = $converter->convert($from, $to);
-
-        $this->assertEquals($expectedValue, $result->getValue());
-        $this->assertEquals($expectedUnitName, $result->getUnit()->getName());
-        $this->assertEquals($expectedUnitAbbreviation, $result->getUnit()->getAbbreviation());
     }
 
     public function testNoRoundingErrorDuringAdditionAndSubtractionAndConversion()

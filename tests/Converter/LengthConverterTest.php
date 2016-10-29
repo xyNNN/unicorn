@@ -85,24 +85,6 @@ class LengthConverterTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProvider
-     * @param LengthConverter $converter
-     * @param ConvertibleValue $from
-     * @param Unit $to
-     * @param string $expectedValue
-     * @param string $expectedUnitName
-     * @param string $expectedUnitAbbreviation
-     */
-    public function testConversion(LengthConverter $converter, ConvertibleValue $from, Unit $to, string $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
-    {
-        $result = $converter->convert($from, $to);
-
-        $this->assertEquals($expectedValue, $result->getValue());
-        $this->assertEquals($expectedUnitName, $result->getUnit()->getName());
-        $this->assertEquals($expectedUnitAbbreviation, $result->getUnit()->getAbbreviation());
-    }
-
     public function testNestedConversion()
     {
         $converter = $this->getConverter();

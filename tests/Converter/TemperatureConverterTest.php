@@ -12,7 +12,6 @@ namespace Xynnn\Unicorn\Tests\Converter;
 use PHPUnit_Framework_TestCase;
 use Xynnn\Unicorn\Converter\TemperatureConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
-use Xynnn\Unicorn\Model\Unit;
 
 class TemperatureConverterTest extends PHPUnit_Framework_TestCase
 {
@@ -44,24 +43,6 @@ class TemperatureConverterTest extends PHPUnit_Framework_TestCase
             [$converter, new ConvertibleValue('10', $converter::$celsius), $converter::$kelvin, '283.15', $converter::$kelvin->getName(), $converter::$kelvin->getAbbreviation()],
             [$converter, new ConvertibleValue('100', $converter::$celsius), $converter::$kelvin, '373.15', $converter::$kelvin->getName(), $converter::$kelvin->getAbbreviation()]
         ];
-    }
-
-    /**
-     * @dataProvider dataProvider
-     * @param TemperatureConverter $converter
-     * @param ConvertibleValue $from
-     * @param Unit $to
-     * @param string $expectedValue
-     * @param string $expectedUnitName
-     * @param string $expectedUnitAbbreviation
-     */
-    public function testConversion(TemperatureConverter $converter, ConvertibleValue $from, Unit $to, string $expectedValue, string $expectedUnitName, string $expectedUnitAbbreviation)
-    {
-        $result = $converter->convert($from, $to);
-
-        $this->assertEquals($expectedValue, $result->getValue());
-        $this->assertEquals($expectedUnitName, $result->getUnit()->getName());
-        $this->assertEquals($expectedUnitAbbreviation, $result->getUnit()->getAbbreviation());
     }
 
     /**
