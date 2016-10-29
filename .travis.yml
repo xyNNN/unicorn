@@ -11,9 +11,3 @@ before_script:
     - wget -nc http://getcomposer.org/composer.phar
     - php composer.phar install
     - wget https://scrutinizer-ci.com/ocular.phar
-
-script:
-    - phpunit --coverage-clover=clover.xml
-
-after_script:
-  - php ocular.phar code-coverage:upload --access-token="$SCRUTINIZER_TOKEN" --format=php-clover clover.xml
