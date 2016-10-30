@@ -4,12 +4,17 @@
 [![Build Status](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/build.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
 [![Software License](https://img.shields.io/badge/license-LGPL%203.0-brightgreen.svg?style=flat-square)](LICENSE)
+[![Documentation Status](https://readthedocs.org/projects/unicorn/badge/?version=latest)](http://unicorn.readthedocs.io/en/latest/?badge=latest)
 
 A PHP based framework agnostic library to convert several units
 
 ## Installation
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+## Documentation
+
+[http://unicorn.readthedocs.io](http://unicorn.readthedocs.io)
 
 ## Converters
 
