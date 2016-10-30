@@ -1,40 +1,18 @@
-unicorn
-========
+.. title:: Unicorn - A framework agnostic library to convert between several units
 
-unicorn will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
+=====================
+Unicorn Documentation
+=====================
 
-Features
---------
+A framework agnostic library to convert between several units.
 
-- .. _LengthConverter:
+User Guide
+==========
 
-LengthConverter
-~~~~~~~~~~~~~~~
-
-Test 123
-
-Installation
-------------
-
-Install $project by running:
-
-    install project
-
-Contribute
-----------
-
-- Issue Tracker: github.com/$project/$project/issues
-- Source Code: github.com/$project/$project
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@google-groups.com
-
-License
--------
-
-The project is licensed under the BSD license.
-
+.. toctree::
+   :maxdepth: 3
+   install
+   converters
+   contribute
+   support
+   license
