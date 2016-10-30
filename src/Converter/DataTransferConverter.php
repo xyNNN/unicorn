@@ -220,8 +220,8 @@ class DataTransferConverter extends AbstractMathematicalConverter
         $this->units[] = self::$zettabyte_per_second = new Unit('Zettabyte per second', 'ZB/s', '0.000000000000000125');
         $this->units[] = self::$yottabyte_per_second = new Unit('Yottabyte per second', 'YB/s', '0.000000000000000000125');
 
-        $this->units[] = self::$kibibyte_per_second = new Unit('Kibibyte per second', 'KiB/s', bcmul('0.11920929', '1024', self::MAX_DECIMALS));
-        $this->units[] = self::$mebibyte_per_second = new Unit('Mebibyte per second', 'MiB/s', '0.11920929');
+        $this->units[] = self::$kibibyte_per_second = new Unit('Kibibyte per second', 'KiB/s', '122.07031296');
+        $this->units[] = self::$mebibyte_per_second = new Unit('Mebibyte per second', 'MiB/s', bcdiv(self::$kibibyte_per_second->getFactor(), '1024', self::MAX_DECIMALS));
         $this->units[] = self::$gibibyte_per_second = new Unit('Gibibyte per second', 'GiB/s', bcdiv(self::$mebibyte_per_second->getFactor(), '1024', self::MAX_DECIMALS));
         $this->units[] = self::$tebibyte_per_second = new Unit('Tebibyte per second', 'TiB/s', bcdiv(self::$gibibyte_per_second->getFactor(), '1024', self::MAX_DECIMALS));
         $this->units[] = self::$pebibyte_per_second = new Unit('Pebibyte per second', 'PiB/s', bcdiv(self::$tebibyte_per_second->getFactor(), '1024', self::MAX_DECIMALS));
