@@ -10,9 +10,10 @@ User Guide
 ==========
 
 .. toctree::
-    :maxdepth: 3
-    install
-    converters
-    contribute
-    support
-    license
+   :maxdepth: 3
+
+   install
+   converters
+   contribute
+   support
+   license
