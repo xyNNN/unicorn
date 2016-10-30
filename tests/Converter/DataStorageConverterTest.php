@@ -46,7 +46,8 @@ class DataStorageConverterTest extends AbstractConverterTest
             [$converter, new ConvertibleValue('1', $converter::$gigabit), $converter::$megabit, '1000', $converter::$megabit->getName(), $converter::$megabit->getAbbreviation()],
             [$converter, new ConvertibleValue('1', $converter::$gigabit), $converter::$megabyte, '125', $converter::$megabyte->getName(), $converter::$megabyte->getAbbreviation()],
             [$converter, new ConvertibleValue('1', $converter::$gibibit), $converter::$mebibit, '1024', $converter::$mebibit->getName(), $converter::$mebibit->getAbbreviation()],
-            [$converter, new ConvertibleValue('1', $converter::$gibibit), $converter::$megabyte, '134.217728', $converter::$megabyte->getName(), $converter::$megabyte->getAbbreviation()]
+            [$converter, new ConvertibleValue('1', $converter::$gibibit), $converter::$megabyte, '134.217728', $converter::$megabyte->getName(), $converter::$megabyte->getAbbreviation()],
+            [$converter, new ConvertibleValue('1', $converter::$megabyte), $converter::$mebibyte, '0.95367431640625', $converter::$mebibyte->getName(), $converter::$mebibyte->getAbbreviation()]
         ];
     }
 

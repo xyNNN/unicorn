@@ -131,7 +131,6 @@ class DataStorageConverter extends AbstractMathematicalConverter
      */
     public static $petabit;
 
-
     /**
      * @var Unit $exabit Static instance for conversions
      */
@@ -212,7 +211,7 @@ class DataStorageConverter extends AbstractMathematicalConverter
         $this->units[] = self::$yobibyte = new Unit('Yobibyte', 'YiB', bcdiv(self::$zebibyte->getFactor(), '1024', self::MAX_DECIMALS));
 
         $this->units[] = self::$bit = new Unit('Bit', 'bit', '8000000');
-        $this->units[] = self::$kilobit = new Unit('Kilobit', 'kbit', '8000');
+        $this->units[] = self::$kilobit = new Unit('Kilobit', 'Kbit', '8000');
         $this->units[] = self::$megabit = new Unit('Megabit', 'Mbit', '8');
         $this->units[] = self::$gigabit = new Unit('Gigabit', 'Gbit', '0.008');
         $this->units[] = self::$terabit = new Unit('Terabit', 'Tbit', '0.000008');
@@ -221,7 +220,7 @@ class DataStorageConverter extends AbstractMathematicalConverter
         $this->units[] = self::$zettabit = new Unit('Zettabit', 'Zbit', '0.000000000000008');
         $this->units[] = self::$yottabit = new Unit('Yottabit', 'Ybit', '0.000000000000000008');
 
-        $this->units[] = self::$kibibit = new Unit('Kibibit', 'kibit', '7812.5');
+        $this->units[] = self::$kibibit = new Unit('Kibibit', 'Kibit', '7812.5');
         $this->units[] = self::$mebibit = new Unit('Mebibit', 'Mibit', bcdiv(self::$kibibit->getFactor(), '1024', self::MAX_DECIMALS));
         $this->units[] = self::$gibibit = new Unit('Gibibit', 'Gibit', bcdiv(self::$mebibit->getFactor(), '1024', self::MAX_DECIMALS));
         $this->units[] = self::$tebibit = new Unit('Tebibit', 'Tibit', bcdiv(self::$gibibit->getFactor(), '1024', self::MAX_DECIMALS));
