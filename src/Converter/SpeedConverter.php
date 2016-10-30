@@ -17,16 +17,16 @@ class SpeedConverter extends AbstractMathematicalConverter
 {
 
     /**
-     * @var Unit $kmh Static instance for conversions
+     * @var Unit $kilometers_per_hour Static instance for conversions
      */
-    public static $kmh;
+    public static $kilometers_per_hour;
 
     /**
      * LengthConverter constructor.
      */
     public function __construct()
     {
-        $this->units[] = self::$kmh = new Unit('kilometer per hour', 'km/h', '1');
+        $this->units[] = self::$kilometers_per_hour = new Unit('kilometer per hour', 'km/h', '1');
     }
 
     /**
@@ -43,7 +43,7 @@ class SpeedConverter extends AbstractMathematicalConverter
     protected function normalize(ConvertibleValue $cv)
     {
         parent::normalize($cv);
-        $cv->setUnit(self::$kmh);
+        $cv->setUnit(self::$kilometers_per_hour);
     }
 
 }
