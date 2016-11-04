@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b10230fbb6c3019232976cd369db459c",
-    "content-hash": "06439271c2f8dce948b19f57ed708421",
+    "hash": "411a61555fcda026883e5f352d2bbf4f",
+    "content-hash": "c5b6ef51d97ba0e157acb38537eb66bc",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -230,16 +230,16 @@
         },
         {
             "name": "steffenbrand/curr-curr",
-            "version": "2.1.7",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/steffenbrand/curr-curr.git",
-                "reference": "d8293b2945056fa49ca546b781d35b0c651d4542"
+                "reference": "bf50918f132877b261bc754f9886754795e88a03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/steffenbrand/curr-curr/zipball/d8293b2945056fa49ca546b781d35b0c651d4542",
-                "reference": "d8293b2945056fa49ca546b781d35b0c651d4542",
+                "url": "https://api.github.com/repos/steffenbrand/curr-curr/zipball/bf50918f132877b261bc754f9886754795e88a03",
+                "reference": "bf50918f132877b261bc754f9886754795e88a03",
                 "shasum": ""
             },
             "require": {
@@ -308,7 +308,7 @@
                 "ron",
                 "try"
             ],
-            "time": "2016-11-04 16:21:36"
+            "time": "2016-11-04 18:34:43"
         }
     ],
     "packages-dev": [

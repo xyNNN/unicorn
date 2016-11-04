@@ -19,7 +19,7 @@
   "require": {
     "php": ">=7.0",
     "ext-bcmath": "*",
-    "steffenbrand/curr-curr": "^2.1"
+    "steffenbrand/curr-curr": "^2.2"
   },
   "require-dev": {
     "phpunit/phpunit": "4.8"
