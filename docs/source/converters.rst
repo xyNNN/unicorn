@@ -20,7 +20,7 @@ own units to a converter. The factor is used to normalize a value.
 
 Let's say you want to normalize 1 kilometer to meter, as meter is the base unit of the LengthConverter.
 The 1 meter is 0.001 kilometer, so the factor of the unit kilometer is 0.001. This example is taken directly from
-the LengthConverter constructor, where the Unit kilometer is already set.
+the LengthConverter constructor, where the Unit kilometer is already set up.
 
 .. code-block:: php
 
@@ -69,12 +69,9 @@ Adding Units
 
 text here
 
-Class Diagram
--------------
-
-.. image:: images/diagram.png
-
-text here
+=========================
+Converter Implementations
+=========================
 
 .. toctree::
    :maxdepth: 3
