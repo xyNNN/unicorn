@@ -1,7 +1,7 @@
-.. title:: ConverterRegistry
+.. title:: LengthConverter
 
-=================
-ConverterRegistry
-=================
+===============
+LengthConverter
+===============
 
 Some general info
