@@ -51,6 +51,7 @@ If you want to represent 1000 meters as a ConvertibleValue, it will look like th
 
 .. code-block:: php
 
+   $converter = new LengthConverter();
    new ConvertibleValue('1000', $converter::$meter);
    new ConvertibleValue('1000.1234567890134567890', $converter::$meter); // decimals are seperated with a "." (dot).
 
