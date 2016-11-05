@@ -14,7 +14,6 @@ User Guide
 
    requirements
    installation
-   quick-start
    convertible-value-unit
    converters
    contribute

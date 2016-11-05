@@ -20,7 +20,7 @@ class SimplifiedExamplesTest extends PHPUnit_Framework_TestCase
 
     public function testSimpleLengthConversion()
     {
-        // example for simple conversion of 100 centimeter to meter
+        // example for simple conversion of 110 centimeter to meter
         $converter = new LengthConverter();
         $result = $converter->convert(new ConvertibleValue('110', $converter::$centimeter), $converter::$meter);
 
