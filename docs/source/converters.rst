@@ -36,36 +36,6 @@ Here is a quick example that shows how to convert 110 centimeters to meters:
     $result->getUnit()->getAbbreviation(); // 'm'
     $result->getUnit()->getName(); // 'meter'
 
-Adding your own units
-=====================
-
-Most converters already provide a lot of units that you can use for conversions.
-However, if you are missing a Unit, you can add it to the converter and start using it.
-The method addUnit is only present on converters with factor-based conversion.
-F.e. the Factor to convert from centimeter to meter is 100, while the factor to convert from kilometer to meter is 0.001.
-So the factor tells the converter how to normalize the given value to its base unit.
-Adding units to formula-based converters, like the TemperatureConverter, is currently not supported.
-
-.. code-block:: php
-
-    $converter = new LengthConverter();
-    $myUnit = new Unit('myUnit', 'mu', '5');
-    $converter->addUnit($myUnit);
-
-    $result = $converter->convert(new ConvertibleValue('1', $converter::$meter), $myUnit);
-
-    $result->getValue(); // '5.0' with 999 decimals
-    $result->getFloatValue(); // 5
-    $result->getUnit()->getAbbreviation(); // 'mu'
-    $result->getUnit()->getName(); // 'myUnit'
-
-The converters currently providing the addUnit method are:
-
-- LengthConverter
-- CurrencyConverter
-- DataStorageConverter
-- DataTransferConverter
-
 Mathematical operations
 =======================
 
@@ -119,6 +89,36 @@ is the return type of all operations.
         ),
         $converter::$micrometer
     );
+
+Adding your own units
+=====================
+
+All converters already provide a lot of units that you can use for conversions.
+However, if you are missing a Unit, you can add it to the converter and start using it.
+F.e. the Factor to convert from centimeter to meter is 100, while the factor to convert from kilometer to meter is 0.001.
+So the factor tells the converter how to normalize the given value to its base unit.
+
+.. container::
+
+Not all converters are factor-based converters.
+Some converters, like the TemperatureConverter, convert based on formulas.
+See "Extending Converters" for further information.
+
+.. code-block:: php
+
+    $converter = new LengthConverter();
+    $myUnit = new Unit('myUnit', 'mu', '5');
+    $converter->addUnit($myUnit);
+
+    $result = $converter->convert(new ConvertibleValue('1', $converter::$meter), $myUnit);
+
+    $result->getValue(); // '5.0' with 999 decimals
+    $result->getFloatValue(); // 5
+    $result->getUnit()->getAbbreviation(); // 'mu'
+    $result->getUnit()->getName(); // 'myUnit'
+
+Extending Converters
+====================
 
 Converter Registry
 ==================
