@@ -1,4 +1,4 @@
-.. title:: Unicorn - A framework agnostic library to convert between several units
+.. title:: Unicorn
 
 =====================
 Unicorn Documentation

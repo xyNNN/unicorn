@@ -1,4 +1,4 @@
-.. title:: ConvertibleValue and Unit (Unicorns DTOs)
+.. title:: ConvertibleValue and Unit
 
 =========================================
 ConvertibleValue and Unit (Unicorns DTOs)
