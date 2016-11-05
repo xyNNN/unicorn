@@ -123,7 +123,38 @@ is the return type of all operations.
 Converter Registry
 ==================
 
-some text here
+If you need to use more than one converter in your project, but you don't want to inject every single converter, you can add a set
+of converters to the ConverterRegistry and inject the registry instead.
+
+The ConverterRegistry can be instantiated with an array of converters:
+
+.. code-block:: php
+
+    $registry = new ConverterRegistry([
+        new LengthConverter(),
+        new CurrencyConverter(),
+        new TemperatureConverter(),
+        new DataStorageConverter(),
+        new DataTransferConverter()
+    ]);
+
+You can also add converters using the add method:
+
+.. code-block:: php
+
+    $registry = new ConverterRegistry();
+    $registry->add(new LengthConverter());
+
+To get a converter instance from the ConverterRegistry, use the get method with the name of the converter:
+
+.. code-block:: php
+
+    $registry = new ConverterRegistry([
+        new LengthConverter(),
+        new CurrencyConverter()
+    ]);
+
+   $lengthConverter = $registry->get('unicorn.converter.length');
 
 Converter Implementations
 =========================
