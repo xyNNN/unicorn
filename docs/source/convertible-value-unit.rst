@@ -1,8 +1,8 @@
 .. title:: ConvertibleValue and Unit
 
-=========================================
-ConvertibleValue and Unit (Unicorns DTOs)
-=========================================
+=========================
+ConvertibleValue and Unit
+=========================
 
 This section will provide you general information on units how to use the ConvertibleValue,
 which is unicorns general data transfer object.
