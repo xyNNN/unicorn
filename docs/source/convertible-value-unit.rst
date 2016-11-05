@@ -60,4 +60,5 @@ Since php loves type juggling and is able to cast almost anything to string, you
 
 .. code-block:: php
 
+   $converter = new LengthConverter();
    new ConvertibleValue(1000.12345678901234, $converter::$meter);
