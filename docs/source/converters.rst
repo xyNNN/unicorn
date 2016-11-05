@@ -4,9 +4,10 @@
 Converters
 ==========
 
-Some general info
+something in general
 
-LengthConverter
-===============
+.. toctree::
+   :maxdepth: 3
 
-how to use
+   converter-registry
+   length-converter
