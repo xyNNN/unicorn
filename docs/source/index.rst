@@ -12,6 +12,7 @@ User Guide
 .. toctree::
    :maxdepth: 3
 
+   requirements
    installation
    quick-start
    convertible-value-unit
