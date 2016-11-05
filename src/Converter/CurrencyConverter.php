@@ -259,7 +259,6 @@ class CurrencyConverter extends AbstractMathematicalConverter
             }
         }
         parent::normalize($cv);
-        $cv->setUnit(self::$eur);
     }
 
     public function loadExchangeRates()
@@ -275,6 +274,11 @@ class CurrencyConverter extends AbstractMathematicalConverter
         } catch (Exception $e) {
             throw new ConversionFailedException($e);
         }
+    }
+
+    public function getBaseUnit(): Unit
+    {
+        return self::$eur;
     }
 
     /**

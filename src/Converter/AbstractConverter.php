@@ -67,6 +67,7 @@ abstract class AbstractConverter implements ConverterInterface
     protected function normalize(ConvertibleValue $cv)
     {
         $cv->setValue(bcdiv($cv->getValue(), $cv->getUnit()->getFactor(), self::MAX_DECIMALS));
+        $cv->setUnit($this->getBaseUnit());
     }
 
     /**

@@ -11,7 +11,6 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\Model\Unit;
-use Xynnn\Unicorn\Model\ConvertibleValue;
 
 class DataStorageConverter extends AbstractMathematicalConverter
 {
@@ -238,13 +237,25 @@ class DataStorageConverter extends AbstractMathematicalConverter
         return 'unicorn.converter.datastorage';
     }
 
-    /**
-     * @param ConvertibleValue $cv The Convertible to be normalized
-     */
-    protected function normalize(ConvertibleValue $cv)
+    public function getBaseUnit(): Unit
     {
-        parent::normalize($cv);
-        $cv->setUnit(self::$megabyte);
+        return self::$megabyte;
+    }
+
+    /**
+     * @param array $units
+     */
+    public function setUnits(array $units)
+    {
+        $this->units = $units;
+    }
+
+    /**
+     * @param Unit $unit
+     */
+    public function addUnit(Unit $unit)
+    {
+        $this->units[] = $unit;
     }
 
 }

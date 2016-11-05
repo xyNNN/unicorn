@@ -70,7 +70,7 @@ class TemperatureConverter extends AbstractMathematicalConverter
         }
 
         $cv->setValue($value);
-        $cv->setUnit(self::$celsius);
+        $cv->setUnit($this->getBaseUnit());
     }
 
     /**
@@ -96,6 +96,11 @@ class TemperatureConverter extends AbstractMathematicalConverter
 
         $from->setValue($value);
         $from->setUnit($to);
+    }
+
+    public function getBaseUnit(): Unit
+    {
+        return self::$celsius;
     }
 
 }

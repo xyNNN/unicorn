@@ -11,7 +11,6 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\Model\Unit;
-use Xynnn\Unicorn\Model\ConvertibleValue;
 
 class LengthConverter extends AbstractMathematicalConverter
 {
@@ -96,13 +95,9 @@ class LengthConverter extends AbstractMathematicalConverter
         return 'unicorn.converter.length';
     }
 
-    /**
-     * @param ConvertibleValue $cv The Convertible to be normalized
-     */
-    protected function normalize(ConvertibleValue $cv)
+    public function getBaseUnit(): Unit
     {
-        parent::normalize($cv);
-        $cv->setUnit(self::$meter);
+        return self::$meter;
     }
 
     /**

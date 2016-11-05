@@ -26,4 +26,9 @@ interface ConverterInterface
      * @return ConvertibleValue
      */
     public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue;
+
+    /**
+     * @return Unit
+     */
+    public function getBaseUnit(): Unit;
 }

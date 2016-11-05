@@ -11,7 +11,6 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Xynnn\Unicorn\Model\Unit;
-use Xynnn\Unicorn\Model\ConvertibleValue;
 
 class DataTransferConverter extends AbstractMathematicalConverter
 {
@@ -238,13 +237,25 @@ class DataTransferConverter extends AbstractMathematicalConverter
         return 'unicorn.converter.datatransfer';
     }
 
-    /**
-     * @param ConvertibleValue $cv The Convertible to be normalized
-     */
-    protected function normalize(ConvertibleValue $cv)
+    public function getBaseUnit(): Unit
     {
-        parent::normalize($cv);
-        $cv->setUnit(self::$megabit_per_second);
+        return self::$megabit_per_second;
+    }
+
+    /**
+     * @param array $units
+     */
+    public function setUnits(array $units)
+    {
+        $this->units = $units;
+    }
+
+    /**
+     * @param Unit $unit
+     */
+    public function addUnit(Unit $unit)
+    {
+        $this->units[] = $unit;
     }
 
 }
