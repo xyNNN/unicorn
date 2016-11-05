@@ -14,6 +14,7 @@ User Guide
 
    installation
    quick-start
+   convertible-value-unit
    converters
    contribute
    license
