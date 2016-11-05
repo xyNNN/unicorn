@@ -11,6 +11,7 @@ Unit
 ====
 
 It consists of three properties:
+
 - name: the full name of the unit, f.e. "centimeter"
 - abbreviation: the abbreviation of the unit, f.e "cm"
 - factor: the factor to normalize this unit to the converters base unit
@@ -41,7 +42,8 @@ ConvertibleValue
 A ConvertibleValue is the general data transfer object of unicorn.
 Before you start converting or performing mathematical operations, you have to wrap your data in a ConvertibleValue.
 
-It consists of two properties
+It consists of two properties:
+
 - value: the actual value
 - unit: the unit in which the value is represented
 
