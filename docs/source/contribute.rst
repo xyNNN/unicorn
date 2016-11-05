@@ -4,4 +4,5 @@
 Contribute
 ==========
 
-Issues bla blabla
+- Issue Tracker: https://github.com/xyNNN/unicorn/issues
+- Source Code: https://github.com/xyNNN/unicorn
