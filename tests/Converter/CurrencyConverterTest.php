@@ -2,11 +2,12 @@
 /*
  * This file is part of the unicorn project
  *
- * (c) Philipp Braeutigam <philipp.braeutigam@googlemail.com>
+ * (c) Philipp Braeutigam <philipp.braeutigam@googlemail.com>, Steffen Brand <s.brand@steffenbrand.com> and contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Xynnn\Unicorn\Tests\Converter;
 
 use SteffenBrand\CurrCurr\Client\EcbClientMock;

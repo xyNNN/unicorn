@@ -13,6 +13,10 @@
     {
       "name": "Philipp Bräutigam",
       "email": "philipp.braeutigam@googlemail.com"
+    },
+    {
+      "name": "Steffen Brand",
+      "email": "s.brand@steffenbrand.com"
     }
   ],
   "minimum-stability": "stable",
