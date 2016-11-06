@@ -278,7 +278,7 @@ Converter Implementations
 =========================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    length-converter
    currency-converter
