@@ -1,7 +1,7 @@
 {
   "name": "xynnn/unicorn",
   "type": "library",
-  "description": "A framework agnostic library to convert several units",
+  "description": "A framework agnostic PHP library to convert several units",
   "keywords": [
     "converter",
     "units",
@@ -9,6 +9,7 @@
   ],
   "homepage": "https://github.com/xyNNN/unicorn",
   "license": "GNU LGPL v3.0",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Philipp Bräutigam",
