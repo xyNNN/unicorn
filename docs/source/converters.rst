@@ -98,7 +98,7 @@ However, if you are missing a Unit, you can add it to the converter and start us
 F.e. the Factor to convert from centimeter to meter is 100, while the factor to convert from kilometer to meter is 0.001.
 So the factor tells the converter how to normalize the given value to its base unit.
 
-.. container:: highlighted
+.. note::
 
 Not all converters are factor-based converters.
 Some converters, like the TemperatureConverter, convert based on formulas.
