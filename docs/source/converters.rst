@@ -76,8 +76,7 @@ Nesting
 =======
 
 Feel free to nest mathematical operations and conversions as you like,
-as they all work on and return ``ConvertibleValue``,
-which is the return type of all operations.
+as they all work on ``ConvertibleValue``, which is the return type of all operations.
 
 .. code-block:: php
 
