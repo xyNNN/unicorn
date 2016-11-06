@@ -99,8 +99,8 @@ F.e. the Factor to convert from centimeter to meter is 100, while the factor to 
 So the factor tells the converter how to normalize the given value to its base unit.
 
 .. note:: Not all converters are factor-based converters.
-Some converters, like the TemperatureConverter, convert based on formulas.
-See "Extending Converters" for further information.
+          Some converters, like the TemperatureConverter, convert based on formulas.
+          See "Extending Converters" for further information.
 
 .. code-block:: php
 
