@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/xynnn/google-tag-manager-bundle/license)](https://github.com/xyNNN/unicorn/blob/master/LICENSE.md)
 [![Documentation Status](https://readthedocs.org/projects/unicorn/badge/?version=latest)](http://unicorn.readthedocs.io/en/latest/?badge=latest)
 
-![Unicorn Logo](https://github.com/xynnn/unicorn/blob/master/unicorn-logo.png)
+![Unicorn Logo](https://github.com/xynnn/unicorn/blob/master/unicorn.png)
 
 A PHP based framework agnostic library to convert several units
 
