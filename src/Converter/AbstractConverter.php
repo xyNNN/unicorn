@@ -10,6 +10,7 @@
 
 namespace Xynnn\Unicorn\Converter;
 
+use InvalidArgumentException;
 use Xynnn\Unicorn\ConverterInterface;
 use Xynnn\Unicorn\Exception\UnsupportedUnitException;
 use Xynnn\Unicorn\Model\ConvertibleValue;
@@ -38,7 +39,7 @@ abstract class AbstractConverter implements ConverterInterface
     public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
     {
         if (!$from instanceof ConvertibleValue || !is_string($from->getValue()) || !$from->getUnit() instanceof Unit) {
-            throw new \InvalidArgumentException('The given ConvertibleValue is not valid for conversion.');
+            throw new InvalidArgumentException('The given ConvertibleValue is not valid for conversion.');
         }
 
         $this->validate([$from->getUnit(), $to]);
