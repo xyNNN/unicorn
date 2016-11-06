@@ -25,6 +25,7 @@ the LengthConverter constructor, where the Unit kilometer is already set up.
 
 .. code-block:: php
 
+   <?php
    new Unit('kilometer', 'km', '0.001');
 
 All converters already provide a number of units ready to use as static variables.
@@ -32,6 +33,7 @@ Have a look at the corresponding converters documentation to see which units are
 
 .. code-block:: php
 
+   <?php
    $converter = new LengthConverter();
    $converter::$kilometer; // the unit "meter" already set up and ready to use
 
@@ -51,6 +53,7 @@ If you want to represent 1000 meters as a ConvertibleValue, it will look like th
 
 .. code-block:: php
 
+   <?php
    $converter = new LengthConverter();
    new ConvertibleValue('1000', $converter::$meter);
    new ConvertibleValue('1000.1234567890134567890', $converter::$meter); // decimals are seperated with a "." (dot).
@@ -60,5 +63,6 @@ Since php loves type juggling and is able to cast almost anything to string, you
 
 .. code-block:: php
 
+   <?php
    $converter = new LengthConverter();
    new ConvertibleValue(1000.12345678901234, $converter::$meter);
