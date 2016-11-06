@@ -16,7 +16,7 @@ A PHP based framework agnostic library to convert several units
 ## Requirements
 
 - PHP 7.0 or higher
-- BCMath_ extension installed and enabled
+- BCMath extension installed and enabled
 
 ## Installation
 
