@@ -10,7 +10,7 @@ Converting
 ==========
 
 To convert a ConvertibleValue to another Unit, you have to call the convert method.
-The method works as follows: convert "X of Unit Y" to "Unit Z".
+The method works as follows: convert ``X of Unit Y`` to ``Unit Z``.
 The convert method returns a ConvertibleValue, that you can use for further operations.
 Let's have a look at the convert methods signature:
 
@@ -100,10 +100,11 @@ So the factor tells the converter how to normalize the given value to its base u
 
 .. note:: Not all converters are factor-based converters.
           Some converters, like the TemperatureConverter, convert based on formulas.
-          See "Extending Converters" for further information.
+          See `Extending Converters`_ for further information.
 
 .. code-block:: php
 
+    <?php
     $converter = new LengthConverter();
     $myUnit = new Unit('myUnit', 'mu', '5');
     $converter->addUnit($myUnit);
@@ -114,6 +115,7 @@ So the factor tells the converter how to normalize the given value to its base u
     $result->getFloatValue(); // 5
     $result->getUnit()->getAbbreviation(); // 'mu'
     $result->getUnit()->getName(); // 'myUnit'
+    ?>
 
 Extending Converters
 ====================
@@ -165,3 +167,5 @@ Converter Implementations
    temperature-converter
    data-storage-converter
    data-transfer-converter
+
+.. _Extending Converters:: http://unicorn.readthedocs.io/en/latest/converters.html#extending-converters
