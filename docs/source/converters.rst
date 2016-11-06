@@ -99,13 +99,8 @@ Adding your own units
 
 All converters already provide a lot of units that you can use for conversions.
 However, if you are missing a ``Unit``, you can add it to the converter and start using it.
-F.e. the factor to convert from `centimeter` to `meter` is `100`, while the factor to convert from `kilometer` to `meter` is `0.001`.
-So the factor tells the converter how to normalize the given value to its base unit.
-
-.. note:: Not all converters are factor-based converters.
-          Some converters, like the TemperatureConverter, convert based on formulas, so they don't provide
-          a ``addUnit`` oder ``setUnits`` method. If you want to add your own units, you need to extend the converter.
-          See `Extending converters`_ for further information.
+To add a ``Unit`` to the converter, just use the ``addUnit`` or ``setUnits`` method.
+Make sure to read about Unit_, before you start adding your own units.
 
 .. code-block:: php
 
@@ -120,6 +115,11 @@ So the factor tells the converter how to normalize the given value to its base u
     $result->getFloatValue(); // 5
     $result->getUnit()->getAbbreviation(); // 'mu'
     $result->getUnit()->getName(); // 'myUnit'
+
+.. note:: Not all converters are factor-based converters.
+          Some converters, like the TemperatureConverter, convert based on formulas, so they don't provide
+          a ``addUnit`` oder ``setUnits`` method. If you want to add your own units, you need to extend the converter.
+          See `Extending converters`_ for further information.
 
 Extending converters
 ====================
@@ -283,3 +283,4 @@ Converter Implementations
    data-transfer-converter
 
 .. _Extending Converters:: http://unicorn.readthedocs.io/en/latest/converters.html#extending-converters
+.. _Unit:: http://unicorn.readthedocs.io/en/latest/convertible-value-unit.html#unit
