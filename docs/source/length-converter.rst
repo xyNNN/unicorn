@@ -16,7 +16,7 @@ Features
 
 - Conversion
 - Mathematical operations
-- Adding own Units
+- Adding own units
 
 Predefined Units
 ================

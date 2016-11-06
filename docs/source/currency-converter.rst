@@ -4,4 +4,90 @@
 CurrencyConverter
 =================
 
-Some general info
+Use the ``CurrencyConverter`` to convert between different currencies, f.e. from EUR to USD.
+
+.. note:: This converter loads the current exchange rates from the ECB via Webservice once you start converting or calculating.
+          For more information check out https://github.com/steffenbrand/curr-curr
+
+Base Unit
+=========
+
+- EUR
+
+Features
+========
+
+- Conversion
+- Mathematical operations
+- Adding own units
+
+Predefined Units
+================
+
++------+--------------+---------+
+| Name | Abbreviation | Factor  |
++======+==============+=========+
+| EUR  | €            | 1       |
++------+--------------+---------+
+| USD  | $            | dynamic |
++------+--------------+---------+
+| JPY  | ¥            | dynamic |
++------+--------------+---------+
+| BGN  | лв           | dynamic |
++------+--------------+---------+
+| CZK  | Kč           | dynamic |
++------+--------------+---------+
+| DKK  | kr           | dynamic |
++------+--------------+---------+
+| GBP  | £            | dynamic |
++------+--------------+---------+
+| HUF  | Ft           | dynamic |
++------+--------------+---------+
+| PLN  | zł           | dynamic |
++------+--------------+---------+
+| RON  | lei          | dynamic |
++------+--------------+---------+
+| SEK  | kr           | dynamic |
++------+--------------+---------+
+| CHF  | CHF          | dynamic |
++------+--------------+---------+
+| NOK  | kr           | dynamic |
++------+--------------+---------+
+| HRK  | kn           | dynamic |
++------+--------------+---------+
+| RUB  | руб          | dynamic |
++------+--------------+---------+
+| TRY  | ₺            | dynamic |
++------+--------------+---------+
+| AUD  | $            | dynamic |
++------+--------------+---------+
+| BRL  | R$           | dynamic |
++------+--------------+---------+
+| CAD  | $            | dynamic |
++------+--------------+---------+
+| CNY  | ¥            | dynamic |
++------+--------------+---------+
+| HKD  | $            | dynamic |
++------+--------------+---------+
+| IDR  | Rp           | dynamic |
++------+--------------+---------+
+| ILS  | ₪            | dynamic |
++------+--------------+---------+
+| INR  | ₹            | dynamic |
++------+--------------+---------+
+| KRW  | ₩            | dynamic |
++------+--------------+---------+
+| MXN  | $            | dynamic |
++------+--------------+---------+
+| MYR  | RM           | dynamic |
++------+--------------+---------+
+| NZD  | $            | dynamic |
++------+--------------+---------+
+| PHP  | ₱            | dynamic |
++------+--------------+---------+
+| SGD  | $            | dynamic |
++------+--------------+---------+
+| THB  | ฿            | dynamic |
++------+--------------+---------+
+| ZAR  | R            | dynamic |
++------+--------------+---------+
