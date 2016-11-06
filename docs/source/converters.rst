@@ -231,6 +231,10 @@ The steps are:
 
     }
 
+.. note:: If you're using a factor-based converter, normally there is no reason to extend a converter.
+          Better use the ``addUnit`` oder ``setUnits`` methods instead.
+          See `Adding your own units`_ for further information.
+
 Converter Registry
 ==================
 
@@ -283,4 +287,5 @@ Converter Implementations
    data-transfer-converter
 
 .. _Extending Converters:: http://unicorn.readthedocs.io/en/latest/converters.html#extending-converters
+.. _Adding your own units:: http://unicorn.readthedocs.io/en/latest/converters.html#adding-your-own-units
 .. _Unit:: http://unicorn.readthedocs.io/en/latest/convertible-value-unit.html#unit
