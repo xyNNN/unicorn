@@ -1,4 +1,4 @@
-# unicorn
+# Unicorn
 
 [![Code Coverage](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/build.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/build-status/master)
@@ -47,5 +47,6 @@ of the Composer documentation.
 + [github/steffenbrand](https://github.com/steffenbrand)
 
 ## License
+
 Copyright (c) 2015 Philipp Bräutigam, Steffen Brand and contributors.
 This repository is released under the GNU LGPL v3.0 license.
