@@ -190,7 +190,7 @@ class DataTransferConverter extends AbstractMathematicalConverter
      */
     public function __construct()
     {
-        $this->units[] = self::$bit_per_second = new Unit('Bit', 'Bit per second', '1000000');
+        $this->units[] = self::$bit_per_second = new Unit('Bit per second', 'bit/s', '1000000');
         $this->units[] = self::$kilobit_per_second = new Unit('Kilobit per second', 'Kbit/s', '1000');
         $this->units[] = self::$megabit_per_second = new Unit('Megabit per second', 'Mbit/s', '1');
         $this->units[] = self::$gigabit_per_second = new Unit('Gigabit per second', 'Gbit/s', '0.001');
