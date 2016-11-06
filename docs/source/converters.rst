@@ -133,7 +133,7 @@ The steps are:
 
 - Extend the ``TemperatureConverter``
 - Add your own Unit as static member variable `myUnit`
-- Call the parent constructor and afterwards initialize your own unit `myUnit`
+- Call the parent constructor and afterwards initialize your own unit `myUnit` and add it to the `units` array.
 - Override the ``getName`` method and return your own name `mytemperature`
 - Override the ``normalize`` method and add a case for your own unit `myUnit`
 - Override the ``convertTo`` method and add a case for your own unit `myUnit`
