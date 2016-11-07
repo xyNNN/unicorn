@@ -6,6 +6,11 @@ TemperatureConverter
 
 Use the ``TemperatureConverter`` to convert between different temperature units, f.e. from Celsius to Kelvin.
 
+Name
+====
+
+``unicorn.converter.temperature``
+
 Base Unit
 =========
 
