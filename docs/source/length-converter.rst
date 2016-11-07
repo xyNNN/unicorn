@@ -6,6 +6,11 @@ LengthConverter
 
 Use the ``LengthConverter`` to convert between different length units, f.e. from meters to miles.
 
+Name
+====
+
+``unicorn.converter.length``
+
 Base Unit
 =========
 
