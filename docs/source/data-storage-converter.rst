@@ -6,10 +6,15 @@ DataStorageConverter
 
 Use the ``DataStorageConverter`` to convert between different temperature units, f.e. from Megabyte to Gigabyte.
 
+Name
+====
+
+``unicorn.converter.datastorage``
+
 Base Unit
 =========
 
-- Celsius
+- Megabyte
 
 Features
 ========
