@@ -9,6 +9,11 @@ Use the ``CurrencyConverter`` to convert between different currencies, f.e. from
 .. note:: This converter loads the current exchange rates from the ECB via Webservice once you start converting or calculating.
           For more information check out https://github.com/steffenbrand/curr-curr
 
+Name
+====
+
+``unicorn.converter.currency``
+
 Base Unit
 =========
 
