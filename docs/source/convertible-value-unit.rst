@@ -56,7 +56,6 @@ If you want to represent `1000 meters` as a ``ConvertibleValue``, it will look l
    <?php
    $converter = new LengthConverter();
    new ConvertibleValue('1000', $converter::$meter);
-   new ConvertibleValue('1000.1234567890134567890', $converter::$meter); // decimals are seperated with a "." (dot).
 
 The value is supposed to be a `string` representation, since it allows `endless` decimals, while `float` is limited to `14` decimals.
 Since php loves type juggling and is able to cast almost anything to `string`, you might use `int` or `float` as well.
