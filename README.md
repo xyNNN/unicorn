@@ -25,7 +25,10 @@ Here is a quick example that shows how to convert `110 centimeters` to `meters`:
 ```php
 $converter = new LengthConverter();
 
-$result = $converter->convert(new ConvertibleValue('110', $converter::$centimeter), $converter::$meter);
+$result = $converter->convert(
+    new ConvertibleValue('110', $converter::$centimeter),
+    $converter::$meter
+);
 
 $result->getValue(); // '1.10...' with 999 decimals
 $result->getFloatValue(); // 1.1
