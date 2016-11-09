@@ -13,6 +13,26 @@ A PHP based framework agnostic library to convert several units
 * [Unicorn on Packagist](https://packagist.org/packages/xynnn/unicorn)
 * [Unicorn on GitHub](https://github.com/xynnn/unicorn)
 
+## Documentation
+
+[http://unicorn.readthedocs.io](http://unicorn.readthedocs.io)
+
+## Conversion example
+
+Here is a quick example that shows how to convert `110 centimeters` to `meters`:
+
+
+```php
+$converter = new LengthConverter();
+
+$result = $converter->convert(new ConvertibleValue('110', $converter::$centimeter), $converter::$meter);
+
+$result->getValue(); // '1.10...' with 999 decimals
+$result->getFloatValue(); // 1.1
+$result->getUnit()->getAbbreviation(); // 'm'
+$result->getUnit()->getName(); // 'meter'
+```
+
 ## Requirements
 
 - PHP 7.0 or higher
@@ -30,10 +50,6 @@ composer require xynnn/unicorn
 This command requires you to have Composer installed globally, as explained
 in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
 of the Composer documentation.
-
-## Documentation
-
-[http://unicorn.readthedocs.io](http://unicorn.readthedocs.io)
 
 ## Authors
 
