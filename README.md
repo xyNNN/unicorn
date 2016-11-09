@@ -68,4 +68,5 @@ of the Composer documentation.
 ## License
 
 Copyright (c) 2015 Philipp Bräutigam, Steffen Brand and contributors.
+
 This repository is released under the GNU LGPL v3.0 license.
