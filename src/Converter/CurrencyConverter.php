@@ -11,11 +11,13 @@
 namespace Xynnn\Unicorn\Converter;
 
 use Exception;
+use InvalidArgumentException;
 use SteffenBrand\CurrCurr\Client\EcbClientInterface;
 use SteffenBrand\CurrCurr\CurrCurr;
 use SteffenBrand\CurrCurr\Exception\ConversionFailedException;
 use SteffenBrand\CurrCurr\Exception\CurrencyNotSupportedException;
 use SteffenBrand\CurrCurr\Model\Currency;
+use Xynnn\Unicorn\Exception\UnsupportedUnitException;
 use Xynnn\Unicorn\Model\Unit;
 use Xynnn\Unicorn\Model\ConvertibleValue;
 
@@ -237,6 +239,7 @@ class CurrencyConverter extends AbstractMathematicalConverter
      * @param ConvertibleValue $from
      * @param Unit $to
      * @return ConvertibleValue
+     * @throws UnsupportedUnitException|InvalidArgumentException|ConversionFailedException
      */
     public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
     {
@@ -261,6 +264,9 @@ class CurrencyConverter extends AbstractMathematicalConverter
         parent::normalize($cv);
     }
 
+    /**
+     * @throws ConversionFailedException
+     */
     public function loadExchangeRates()
     {
         try {

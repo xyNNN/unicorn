@@ -35,6 +35,7 @@ abstract class AbstractConverter implements ConverterInterface
      * @param ConvertibleValue $from
      * @param Unit $to
      * @return ConvertibleValue
+     * @throws UnsupportedUnitException|InvalidArgumentException
      */
     public function convert(ConvertibleValue $from, Unit $to): ConvertibleValue
     {
@@ -51,6 +52,7 @@ abstract class AbstractConverter implements ConverterInterface
 
     /**
      * @param array $units
+     * @throws UnsupportedUnitException
      */
     protected function validate(array $units)
     {

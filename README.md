@@ -21,19 +21,24 @@ A PHP based framework agnostic library to convert several units
 
 Here is a quick example that shows how to convert `110 centimeters` to `meters`:
 
-
 ```php
 $converter = new LengthConverter();
 
-$result = $converter->convert(
-    new ConvertibleValue('110', $converter::$centimeter),
-    $converter::$meter
-);
-
-$result->getValue(); // '1.10...' with 999 decimals
-$result->getFloatValue(); // 1.1
-$result->getUnit()->getAbbreviation(); // 'm'
-$result->getUnit()->getName(); // 'meter'
+try {
+    $result = $converter->convert(
+        new ConvertibleValue('110', $converter::$centimeter),
+        $converter::$meter
+    );
+    
+    $result->getValue(); // '1.10...' with 999 decimals
+    $result->getFloatValue(); // 1.1
+    $result->getUnit()->getAbbreviation(); // 'm'
+    $result->getUnit()->getName(); // 'meter'
+} catch (UnsupportedUnitException $e) {
+    // Unit might not be present in the converters units array
+} catch (InvalidArgumentException $e) {
+    // Something is wrong with the provided ConvertibleValue or Unit
+}
 ```
 
 ## Requirements

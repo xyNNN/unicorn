@@ -83,16 +83,22 @@ as they all work on ``ConvertibleValue``, which is the return type of all operat
     <?php
     $converter = new LengthConverter();
 
-    $result = $converter->convert(
-        $converter->add(
+    try {
+        $result = $converter->convert(
             $converter->add(
-                new ConvertibleValue('10000', $converter::$nanometer),
-                new ConvertibleValue('10', $converter::$micrometer)
+                $converter->add(
+                    new ConvertibleValue('10000', $converter::$nanometer),
+                    new ConvertibleValue('10', $converter::$micrometer)
+                ),
+                new ConvertibleValue('30000', $converter::$nanometer)
             ),
-            new ConvertibleValue('30000', $converter::$nanometer)
-        ),
-        $converter::$micrometer
-    );
+            $converter::$micrometer
+        );
+    } catch (UnsupportedUnitException $e) {
+        // Unit might not be present in the converters units array
+    } catch (InvalidArgumentException $e) {
+        // Something is wrong with the provided ConvertibleValue or Unit
+    }
 
 Adding your own units
 =====================
@@ -109,12 +115,18 @@ Make sure to read about Unit_, before you start adding your own units.
     $myUnit = new Unit('myUnit', 'mu', '5');
     $converter->addUnit($myUnit);
 
-    $result = $converter->convert(new ConvertibleValue('1', $converter::$meter), $myUnit);
+    try {
+        $result = $converter->convert(new ConvertibleValue('1', $converter::$meter), $myUnit);
 
-    $result->getValue(); // '5.0' with 999 decimals
-    $result->getFloatValue(); // 5
-    $result->getUnit()->getAbbreviation(); // 'mu'
-    $result->getUnit()->getName(); // 'myUnit'
+        $result->getValue(); // '5.0' with 999 decimals
+        $result->getFloatValue(); // 5
+        $result->getUnit()->getAbbreviation(); // 'mu'
+        $result->getUnit()->getName(); // 'myUnit'
+    } catch (UnsupportedUnitException $e) {
+        // Unit might not be present in the converters units array
+    } catch (InvalidArgumentException $e) {
+        // Something is wrong with the provided ConvertibleValue or Unit
+    }
 
 .. note:: Not all converters are factor-based converters.
           Some converters, like the TemperatureConverter, convert based on formulas, so they don't provide
@@ -272,7 +284,11 @@ To get a converter instance from the ``ConverterRegistry``, use the ``get`` meth
         new CurrencyConverter()
     ]);
 
-   $lengthConverter = $registry->get('unicorn.converter.length');
+    try {
+        $lengthConverter = $registry->get('unicorn.converter.length');
+    } catch (UnsupportedConverterException $e) {
+        // converter might not be present
+    }
 
 Converter Implementations
 =========================
