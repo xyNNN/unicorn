@@ -1,7 +1,7 @@
 # Unicorn
 
 [![Code Coverage](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/build.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/build-status/master)
+[![Build Status](https://travis-ci.org/xyNNN/unicorn.svg?branch=master)](https://travis-ci.org/xyNNN/unicorn)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
 [![License](https://poser.pugx.org/xynnn/unicorn/license)](https://github.com/xyNNN/unicorn/blob/master/LICENSE.md)
 [![Documentation Status](https://readthedocs.org/projects/unicorn/badge/?version=latest)](http://unicorn.readthedocs.io/en/latest/?badge=latest)
