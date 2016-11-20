@@ -5,11 +5,11 @@ cache:
 language: php
 
 php:
-    - 7
+    - 7.0
 
 before_script:
-    - wget -nc http://getcomposer.org/composer.phar
-    - php composer.phar install
+    - composer self-update
+    - composer install
     - wget https://scrutinizer-ci.com/ocular.phar
 
 script:
