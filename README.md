@@ -64,7 +64,7 @@ of the Composer documentation.
 **Philipp Bräutigam**
 
 + [github/xyNNN](https://github.com/xyNNN)
-+ [twitter/xyNNN](http://twitter.com/pbraeutigam)
++ [twitter/xyNNN](http://twitter.com/xyNNN)
 
 **Steffen Brand**
 
