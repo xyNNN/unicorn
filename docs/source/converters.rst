@@ -56,8 +56,8 @@ Mathematical operations keep the ``Unit`` of the first ``ConvertibleValue``.
         new ConvertibleValue('200', $converter::$centimeter)
     );
 
-    $resultAdd->getValue(); // '2.0' with 999 decimals
-    $resultAdd->getFloatValue(); // 2
+    $resultAdd->getValue(); // '3.0' with 999 decimals
+    $resultAdd->getFloatValue(); // 3
     $resultAdd->getUnit()->getAbbreviation(); // 'm'
     $resultAdd->getUnit()->getName(); // 'meter'
 
@@ -67,8 +67,8 @@ Mathematical operations keep the ``Unit`` of the first ``ConvertibleValue``.
         new ConvertibleValue('3', $converter::$meter)
     );
 
-    $resultSub->getValue(); // '200.0' with 999 decimals
-    $resultSub->getFloatValue(); // 200
+    $resultSub->getValue(); // '800.0' with 999 decimals
+    $resultSub->getFloatValue(); // 800
     $resultSub->getUnit()->getAbbreviation(); // 'cm'
     $resultSub->getUnit()->getName(); // 'centimeter'
 
