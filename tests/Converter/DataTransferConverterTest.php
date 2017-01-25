@@ -32,7 +32,7 @@ class DataTransferConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    public function dataProvider()
+    public function dataProvider(): array
     {
         $converter = $this->getConverter();
 
@@ -54,7 +54,7 @@ class DataTransferConverterTest extends AbstractConverterTest
     /**
      * @return DataTransferConverter
      */
-    private function getConverter() : DataTransferConverter
+    private function getConverter(): DataTransferConverter
     {
         return new DataTransferConverter();
     }

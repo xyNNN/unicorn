@@ -32,7 +32,7 @@ class TemperatureConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    public function dataProvider()
+    public function dataProvider(): array
     {
         $converter = $this->getConverter();
 
@@ -48,7 +48,7 @@ class TemperatureConverterTest extends AbstractConverterTest
     /**
      * @return TemperatureConverter
      */
-    private function getConverter() : TemperatureConverter
+    private function getConverter(): TemperatureConverter
     {
         return new TemperatureConverter();
     }

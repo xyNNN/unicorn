@@ -95,6 +95,9 @@ class LengthConverter extends AbstractMathematicalConverter
         return 'unicorn.converter.length';
     }
 
+    /**
+     * @return Unit
+     */
     public function getBaseUnit(): Unit
     {
         return self::$meter;

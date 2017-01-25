@@ -98,6 +98,9 @@ class TemperatureConverter extends AbstractMathematicalConverter
         $from->setUnit($to);
     }
 
+    /**
+     * @return Unit
+     */
     public function getBaseUnit(): Unit
     {
         return self::$celsius;

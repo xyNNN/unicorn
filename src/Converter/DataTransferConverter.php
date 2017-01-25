@@ -237,6 +237,9 @@ class DataTransferConverter extends AbstractMathematicalConverter
         return 'unicorn.converter.datatransfer';
     }
 
+    /**
+     * @return Unit
+     */
     public function getBaseUnit(): Unit
     {
         return self::$megabit_per_second;

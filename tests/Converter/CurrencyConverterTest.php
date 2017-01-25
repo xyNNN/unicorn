@@ -56,7 +56,7 @@ class CurrencyConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    public function dataProvider()
+    public function dataProvider(): array
     {
         $converter = $this->getConverter();
         $converter->loadExchangeRates();
@@ -103,7 +103,7 @@ class CurrencyConverterTest extends AbstractConverterTest
     /**
      * @return CurrencyConverter
      */
-    private function getConverter() : CurrencyConverter
+    private function getConverter(): CurrencyConverter
     {
         return new CurrencyConverter(new EcbClientMock(EcbClientMock::VALID_RESPONSE));
     }

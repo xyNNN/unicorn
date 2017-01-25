@@ -282,6 +282,9 @@ class CurrencyConverter extends AbstractMathematicalConverter
         }
     }
 
+    /**
+     * @return Unit
+     */
     public function getBaseUnit(): Unit
     {
         return self::$eur;

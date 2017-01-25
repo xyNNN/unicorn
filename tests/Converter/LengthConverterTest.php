@@ -54,7 +54,7 @@ class LengthConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    public function dataProvider()
+    public function dataProvider(): array
     {
         $converter = $this->getConverter();
 
@@ -198,7 +198,7 @@ class LengthConverterTest extends AbstractConverterTest
     /**
      * @return LengthConverter
      */
-    private function getConverter() : LengthConverter
+    private function getConverter(): LengthConverter
     {
         return new LengthConverter();
     }

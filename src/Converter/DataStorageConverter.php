@@ -237,6 +237,9 @@ class DataStorageConverter extends AbstractMathematicalConverter
         return 'unicorn.converter.datastorage';
     }
 
+    /**
+     * @return Unit
+     */
     public function getBaseUnit(): Unit
     {
         return self::$megabyte;
