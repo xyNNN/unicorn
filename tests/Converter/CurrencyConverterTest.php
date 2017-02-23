@@ -10,7 +10,7 @@
 
 namespace Xynnn\Unicorn\Tests\Converter;
 
-use SteffenBrand\CurrCurr\Client\EcbClientMock;
+use SteffenBrand\CurrCurr\Test\Client\EcbClientMock;
 use SteffenBrand\CurrCurr\Model\Currency;
 use Xynnn\Unicorn\Converter\CurrencyConverter;
 use Xynnn\Unicorn\Model\ConvertibleValue;
