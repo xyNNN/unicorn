@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.org/xyNNN/unicorn.svg?branch=master)](https://travis-ci.org/xyNNN/unicorn)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/xyNNN/unicorn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/xyNNN/unicorn/?branch=master)
 [![License](https://poser.pugx.org/xynnn/unicorn/license)](https://github.com/xyNNN/unicorn/blob/master/LICENSE.md)
-[![Documentation Status](https://readthedocs.org/projects/unicorn/badge/?version=latest)](http://unicorn.readthedocs.io/en/latest/?badge=latest)
 
 ![Unicorn Logo](https://github.com/xynnn/unicorn/blob/master/unicorn.png?raw=true)
 
